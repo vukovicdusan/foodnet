@@ -7,6 +7,7 @@ import Hero from './pages/Hero';
 import OfferSection from './pages/OfferSection';
 import LoginRegister from './pages/LoginRegister';
 import Calculator from './pages/CalculatorSection';
+import UserProfile from './pages/UserProfile';
 
 function App() {
 	return (
@@ -20,6 +21,9 @@ function App() {
 				<Switch>
 					<Route path="/login-register">
 						<LoginRegister></LoginRegister>
+					</Route>
+					<Route path="/user-profile">
+						<UserProfile></UserProfile>
 					</Route>
 					<Route path="/home" exact>
 						<Hero></Hero>

@@ -1,5 +1,6 @@
 import Wrapper from './UI/Wrapper';
 import logo from '../assets/css/img/chili-pepper.png';
+import chevronDown from '../assets/css/img/chevron-down.svg';
 import { NavLink, Link } from 'react-router-dom';
 import AuthContext from '../store/auth-context';
 import { useContext } from 'react';
@@ -38,9 +39,34 @@ const Header = () => {
 									</NavLink>
 								)}
 								{isLoggedIn && (
-									<a href="#" onClick={authContext.logout}>
-										Odjavi se
-									</a>
+									<div className="dropdown-toggle">
+										<span className="with-icon">
+											<svg
+												aria-hidden="true"
+												focusable="false"
+												className="icon"
+											>
+												<use
+													href={
+														chevronDown +
+														'#chevron-down'
+													}
+												></use>
+											</svg>
+											Profil
+										</span>
+										<ul className="[ dropdown-menu ] [ stack ] [ box ]">
+											<Link to="/user-profile">
+												Podešavanja
+											</Link>
+											<a
+												href="/"
+												onClick={authContext.logout}
+											>
+												Odjavi se
+											</a>
+										</ul>
+									</div>
 								)}
 							</li>
 						</ul>

@@ -175,6 +175,24 @@ select {
 	min-inline-size: 20rem;
 }
 
+select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+.select::after {
+	content: '';
+	background-image: url('../css/img/chevron-down.svg');
+	right: 15px;
+	top: 45%;
+	transform: translateY(-50%);
+	height: 15px;
+	width: 15px;
+	position: absolute;
+	pointer-events: none;
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -233,7 +251,7 @@ select:focus + .border-title {
 }
 
 .color-red {
-	color: var(--color-red);
+	color: var(--color-red) !important;
 }
 
 .background-dark {
@@ -284,7 +302,7 @@ select:focus + .border-title {
 }
 
 /** NEPOTREBNO ZA SADA */
-/* .visually-hidden {
+.visually-hidden {
 	border: 0;
 	clip: rect(0 0 0 0);
 	height: auto;
@@ -294,46 +312,12 @@ select:focus + .border-title {
 	position: absolute;
 	width: 1px;
 	white-space: nowrap;
-} */
+}
 
 /** ==== ALERT COMPONENT ==== */
-/* .alert {
-	--alert-text: var(--color-text);
-	--alert-bg: var(--color-bg);
-
-	display: flex;
-	align-items: flex-start;
-	background: var(--alert-bg);
-	color: var(--alert-text);
-	border: 1px solid;
-	padding: var(--metric-box-padding);
-	margin-top: 1rem;
-	animation: slide-up 250ms ease;
+.input-error {
+	border: red solid !important;
 }
-
-.alert[data-state='error'] {
-	--alert-text: var(--color-error);
-	--alert-bg: var(--color-error-bg);
-}
-
-.alert[data-state='success'] {
-	--alert-text: var(--color-success);
-	--alert-bg: var(--color-success-bg);
-}
-
-.alert__icon {
-	font-size: 1.6em;
-	flex-shrink: 0;
-}
-
-.alert__content {
-	padding-left: 0.8rem;
-}
-
-.alert__content b {
-	display: block;
-} */
-
 /** ==== ANIMATIONS ==== */
 /* @keyframes slide-up {
 	0% {
@@ -602,7 +586,50 @@ header {
 	--stack-space: 4rem;
 }
 
+/** ==== DROPDOWN ==== */
+
+.dropdown-toggle {
+	position: relative;
+	cursor: pointer;
+}
+.dropdown-menu {
+	position: absolute;
+	display: none;
+	right: 0;
+	top: 25px;
+}
+.dropdown-menu.stack {
+	--stack-align: flex-end;
+}
+.dropdown-toggle:hover .dropdown-menu,
+.dropdown-menu:hover {
+	display: flex;
+}
+
+.dropdown-menu.box {
+	border: dashed;
+}
+
+.dropdown-toggle .icon {
+	margin-inline-end: 0.4rem;
+	width: 1em;
+	height: 1em;
+}
 /** ==== OFFER-SECTION ====*/
 .offer-section {
 	--grid-gap: 4rem;
+}
+
+/** ==== CALCULATOR SECTION ====*/
+.dash-vertical-leading {
+	height: 150px;
+	width: 2px;
+	border-left: 2px dashed black;
+}
+
+.calculator-section .box {
+	box-shadow: 0 2px 10px var(--color-shadow);
+	padding: var(--input-padding, 0.6rem);
+	border: 2px dashed;
+	min-inline-size: 20rem;
 }

@@ -1,7 +1,8 @@
-import { Fragment, useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import useInput from '../../hooks/useInput';
+
 import AuthContext from '../../store/auth-context';
+import Wrapper from '../UI/Wrapper';
 
 const Login = (props) => {
 	const [isLogin, setIsLogin] = useState(false);
@@ -64,7 +65,7 @@ const Login = (props) => {
 	};
 
 	return (
-		<Fragment>
+		<Wrapper>
 			<div className="[ stack ] [ center-inner ]">
 				<h1>Login</h1>
 				<form
@@ -119,7 +120,7 @@ const Login = (props) => {
 					</Link>
 				</div>
 			</div>
-		</Fragment>
+		</Wrapper>
 	);
 };
 
