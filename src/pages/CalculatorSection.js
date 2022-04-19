@@ -1,4 +1,4 @@
-import { useReducer } from 'react';
+import { useEffect, useReducer, useRef } from 'react';
 import Region from '../components/UI/Region';
 import Wrapper from '../components/UI/Wrapper';
 import calculatorReducer from '../reducers/calculatorReducer';
@@ -6,66 +6,48 @@ import calculatorReducer from '../reducers/calculatorReducer';
 const calculatorInitialState = {
 	goal: { inputValue: 'suficit', valid: true, touched: false },
 	gender: { inputValue: 'male', valid: true, touched: false },
-	age: { inputValue: '', valid: false, touched: false },
-	height: { inputValue: '', valid: false, touched: false },
-	weight: { inputValue: '', valid: false, touched: false },
+	age: { inputValue: '', valid: false, touched: false, error: '' },
+	height: { inputValue: '', valid: false, touched: false, error: '' },
+	weight: { inputValue: '', valid: false, touched: false, error: '' },
 	activity: { inputValue: 'unactive', valid: true, touched: false },
 	pace: { inputValue: '0.3', valid: true, touched: false },
 	result: {},
-	// showResult: false,
 	formIsValid: false,
 };
-
-// console.log(ageValid);
-
+// error: 'Molimo unesite godine između 15 i 80.'
+// error: 'Molimo unesite godine između 30kg i 250kg.'
+// error: 'Molimo unesite visinu između 100cm i 250cm.'
 const Calculator = () => {
 	const [calculatorState, dispatch] = useReducer(
 		calculatorReducer,
 		calculatorInitialState
 	);
 
+	const calculatorResultRef = useRef();
+
 	const inputHandler = (e) => {
-		switch (e.target.name) {
-			case 'goal':
-				dispatch({ type: 'GOAL', payload: e.target.value });
-				break;
-			case 'gender':
-				dispatch({ type: 'GENDER', payload: e.target.value });
-				break;
-			case 'age':
-				dispatch({ type: 'AGE', payload: e.target.value });
-				break;
-			case 'height':
-				dispatch({ type: 'HEIGHT', payload: e.target.value });
-				break;
-			case 'weight':
-				dispatch({ type: 'WEIGHT', payload: e.target.value });
-				break;
-			case 'activity':
-				dispatch({ type: 'ACTIVITY', payload: e.target.value });
-				break;
-			case 'pace':
-				dispatch({ type: 'PACE', payload: e.target.value });
-				break;
-			default:
-				return '';
-		}
-		console.log(calculatorState.goal);
+		dispatch({
+			type: 'CALCULATOR INPUT',
+			payload: e.target.value,
+			inputField: e.target.name,
+		});
 	};
 
 	const blurHandler = (e) => {
-		dispatch({ type: 'BLUR', inputField: e.target.name });
+		dispatch({
+			type: 'BLUR',
+			payload: e.target.value,
+			inputField: e.target.name,
+		});
 	};
 
 	const submitHandler = (e) => {
 		e.preventDefault();
-		// dispatch({
-		// 	type: 'VALIDATE FORM',
-		// });
-		// console.log(calculatorState);
-		// console.log(calculatorState.formIsValid);
+		dispatch({ type: 'VALIDATE FORM' });
+		dispatch({
+			type: 'RESULT',
+		});
 
-		// dispatch({ type: 'RESULT' });
 		console.log(calculatorState);
 	};
 
@@ -75,6 +57,14 @@ const Calculator = () => {
 		!calculatorState.height.valid && calculatorState.height.touched;
 	let finalValidationWeight =
 		!calculatorState.weight.valid && calculatorState.weight.touched;
+
+	const scrollIntoView = () => {
+		calculatorResultRef.current.scrollIntoView();
+	};
+
+	useEffect(() => {
+		calculatorState.formIsValid && scrollIntoView();
+	}, [calculatorState.formIsValid]);
 
 	return (
 		<Region background={'background-light'}>
@@ -230,12 +220,13 @@ const Calculator = () => {
 							</label>
 						</div>
 						<button className="button">Izračunaj</button>
-						{/* <div
+						<div
 							className={
-								calculatorState.result.length > 0
+								calculatorState.formIsValid
 									? '[ stack ] [ center-inner ]'
 									: '[ visually-hidden ] [ stack ] [ center-inner ]'
 							}
+							ref={calculatorResultRef}
 						>
 							<div className="dash-vertical-leading"></div>
 							<div className="[ box ] [ dashed ]">
@@ -275,7 +266,7 @@ const Calculator = () => {
 									</span>
 								</p>
 							</div>
-						</div> */}
+						</div>
 					</form>
 				</div>
 				<div className="dash-vertical"></div>
