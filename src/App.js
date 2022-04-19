@@ -8,6 +8,7 @@ import OfferSection from './pages/OfferSection';
 import LoginRegister from './pages/LoginRegister';
 import Calculator from './pages/CalculatorSection';
 import UserProfile from './pages/UserProfile';
+import FoodPackages from './pages/FoodPackages';
 
 function App() {
 	return (
@@ -29,6 +30,7 @@ function App() {
 						<Hero></Hero>
 						<OfferSection></OfferSection>
 						<Calculator></Calculator>
+						<FoodPackages></FoodPackages>
 					</Route>
 				</Switch>
 			</main>

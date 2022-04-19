@@ -59,7 +59,10 @@ const Calculator = () => {
 		!calculatorState.weight.valid && calculatorState.weight.touched;
 
 	const scrollIntoView = () => {
-		calculatorResultRef.current.scrollIntoView();
+		calculatorResultRef.current.scrollIntoView({
+			behavior: 'smooth',
+			block: 'start',
+		});
 	};
 
 	useEffect(() => {
@@ -127,7 +130,7 @@ const Calculator = () => {
 								name="age"
 								type="number"
 								className={
-									finalValidationAge ? 'input-error' : ''
+									finalValidationAge ? 'input-invalid' : ''
 								}
 							/>
 							<label
@@ -145,7 +148,7 @@ const Calculator = () => {
 								name="weight"
 								type="number"
 								className={
-									finalValidationWeight ? 'input-error' : ''
+									finalValidationWeight ? 'input-invalid' : ''
 								}
 							/>
 							<label
@@ -163,7 +166,7 @@ const Calculator = () => {
 								name="height"
 								type="number"
 								className={
-									finalValidationHeight ? 'input-error' : ''
+									finalValidationHeight ? 'input-invalid' : ''
 								}
 							/>
 							<label
@@ -223,8 +226,8 @@ const Calculator = () => {
 						<div
 							className={
 								calculatorState.formIsValid
-									? '[ stack ] [ center-inner ]'
-									: '[ visually-hidden ] [ stack ] [ center-inner ]'
+									? '[ stack ] [ center-inner ] [ slide-fade--down ]'
+									: '[ display-none ] [ stack ] [ center-inner ]'
 							}
 							ref={calculatorResultRef}
 						>
@@ -266,10 +269,11 @@ const Calculator = () => {
 									</span>
 								</p>
 							</div>
+
+							<div className="dash-vertical-leading"></div>
 						</div>
 					</form>
 				</div>
-				<div className="dash-vertical"></div>
 			</Wrapper>
 		</Region>
 	);

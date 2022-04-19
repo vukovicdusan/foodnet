@@ -28,6 +28,7 @@
 	--margin-top-1: var(--s0);
 	--margin-top-2: var(--s1);
 	--margin-top-3: var(--s2);
+	--box-shadow: 0 2px 10px var(--color-shadow);
 }
 
 /** ==== RESET ====*/
@@ -213,10 +214,6 @@ label {
 	font-size: 0.9rem;
 }
 
-.invalid {
-	border: solid indianred;
-}
-
 /** ==== BORDER TITLE ==== */
 
 .border-title--wrapper {
@@ -225,7 +222,8 @@ label {
 
 .border-title {
 	position: absolute;
-	top: -8px;
+	--border-title--top: -8px;
+	top: var(--border-title--top);
 	right: 15px;
 	background-color: var(--background-light);
 	padding-inline: 0.5rem;
@@ -301,7 +299,8 @@ select:focus + .border-title {
 	margin-block-start: var(--s4, 3rem) !important;
 }
 
-/** NEPOTREBNO ZA SADA */
+/** ==== VISUALLY HIDDEN ==== */
+
 .visually-hidden {
 	border: 0;
 	clip: rect(0 0 0 0);
@@ -314,21 +313,43 @@ select:focus + .border-title {
 	white-space: nowrap;
 }
 
+/** ==== DISPLAY NONE ==== */
+.display-none {
+	display: none !important;
+}
+
 /** ==== ALERT COMPONENT ==== */
-.input-error {
-	border: red solid !important;
+.input-invalid {
+	border: solid indianred !important;
 }
 /** ==== ANIMATIONS ==== */
-/* @keyframes slide-up {
+@keyframes slide-fade--up {
 	0% {
 		opacity: 0;
-		transform: translateY(0.4rem);
+		transform: translateY(2rem);
 	}
 	100% {
 		opacity: 1;
 		transform: translateY(0);
 	}
-} */
+}
+@keyframes slide-fade--down {
+	0% {
+		opacity: 0;
+		transform: translateY(-2rem);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.slide-fade--down {
+	animation: slide-fade--down 1s;
+}
+.slide-fade--up {
+	animation: slide-fade--down 1s;
+}
 /** ==== DASH VERTICAL ==== */
 
 .dash-vertical {
@@ -487,7 +508,7 @@ select:focus + .border-title {
 /** ==== GRID ==== */
 .grid {
 	display: grid;
-	grid-gap: var(--grid-gap);
+	grid-gap: var(--grid-gap, 1rem);
 }
 
 @supports (width: min(250px, 100%)) {
@@ -615,12 +636,12 @@ header {
 	width: 1em;
 	height: 1em;
 }
-/** ==== OFFER-SECTION ====*/
+/** ==== OFFER-SECTION ==== */
 .offer-section {
 	--grid-gap: 4rem;
 }
 
-/** ==== CALCULATOR SECTION ====*/
+/** ==== CALCULATOR SECTION ==== */
 .dash-vertical-leading {
 	height: 150px;
 	width: 2px;
@@ -632,4 +653,19 @@ header {
 	padding: var(--input-padding, 0.6rem);
 	border: 2px dashed;
 	min-inline-size: 20rem;
+}
+
+/** ==== FOOD PACKAGES SECTION ==== */
+.food-packages--region {
+	padding-top: 0;
+}
+
+.food-packages .border-title {
+	--border-title--top: -13px;
+	top: -13px;
+	color: var(--color-red);
+}
+
+.food-packages .border-title--wrapper {
+	box-shadow: var(--box-shadow);
 }
