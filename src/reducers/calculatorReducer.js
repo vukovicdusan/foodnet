@@ -114,53 +114,22 @@ const calculatorReducer = (state, action) => {
 			}
 		}
 
-		case 'VALIDATE FORM':
+		case 'VALIDATE FORM & RESULT':
 			//*state destructuring
-			const {
-				age: { inputValue: ageInput, valid: ageValid },
-				height: { inputValue: heightInput, valid: heightValid },
-				weight: { inputValue: weightInput, valid: weightValid },
-			} = state;
-			const validArr = [ageValid, heightValid, weightValid];
-			const isFalse = validArr.some((element) => element === false);
 
-			return isFalse
-				? {
-						...state,
-						age: {
-							inputValue: ageInput,
-							valid: ageValid,
-							touched: true,
-						},
-						height: {
-							inputValue: heightInput,
-							valid: heightValid,
-							touched: true,
-						},
-						weight: {
-							inputValue: weightInput,
-							valid: weightValid,
-							touched: true,
-						},
-
-						formIsValid: false,
-				  }
-				: {
-						...state,
-
-						formIsValid: true,
-				  };
-
-		case 'RESULT': {
 			const {
 				goal: { inputValue: goalInput },
 				gender: { inputValue: genderInput },
-				age: { inputValue: ageInput },
-				height: { inputValue: heightInput },
-				weight: { inputValue: weightInput },
+				age: { inputValue: ageInput, valid: ageValid },
+				height: { inputValue: heightInput, valid: heightValid },
+				weight: { inputValue: weightInput, valid: weightValid },
 				activity: { inputValue: activityInput },
 				pace: { inputValue: paceInput },
 			} = state;
+
+			const validArr = [ageValid, heightValid, weightValid];
+			const isFalse = validArr.some((element) => element === false);
+
 			//*calculations
 
 			//*protein
@@ -265,16 +234,37 @@ const calculatorReducer = (state, action) => {
 				(BMPFinal - fatValue - proteinValue) / 4
 			);
 
-			return {
-				...state,
-				result: {
-					BMPFinal,
-					proteinPercentage,
-					carbsValue,
-					fatPercentage,
-				},
-			};
-		}
+			return isFalse
+				? {
+						...state,
+						age: {
+							inputValue: ageInput,
+							valid: ageValid,
+							touched: true,
+						},
+						height: {
+							inputValue: heightInput,
+							valid: heightValid,
+							touched: true,
+						},
+						weight: {
+							inputValue: weightInput,
+							valid: weightValid,
+							touched: true,
+						},
+
+						formIsValid: false,
+				  }
+				: {
+						...state,
+						result: {
+							BMPFinal,
+							proteinPercentage,
+							carbsValue,
+							fatPercentage,
+						},
+						formIsValid: true,
+				  };
 		default:
 			return state;
 	}

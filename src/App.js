@@ -3,12 +3,13 @@ import './assets/css/style.css';
 import { Fragment } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Header from './components/Header';
-import Hero from './pages/Hero';
-import OfferSection from './pages/OfferSection';
-import LoginRegister from './pages/LoginRegister';
-import Calculator from './pages/CalculatorSection';
-import UserProfile from './pages/UserProfile';
-import FoodPackages from './pages/FoodPackages';
+// import Hero from './components/Hero';
+// import OfferSection from './components/OfferSection';
+import LoginRegister from './components/LoginRegister';
+// import Calculator from './components/CalculatorSection';
+import UserProfile from './components/UserProfile';
+// import FoodPackages from './components/FoodPackages';
+import Home from './pages/Home';
 
 function App() {
 	return (
@@ -27,10 +28,7 @@ function App() {
 						<UserProfile></UserProfile>
 					</Route>
 					<Route path="/home" exact>
-						<Hero></Hero>
-						<OfferSection></OfferSection>
-						<Calculator></Calculator>
-						<FoodPackages></FoodPackages>
+						<Home></Home>
 					</Route>
 				</Switch>
 			</main>

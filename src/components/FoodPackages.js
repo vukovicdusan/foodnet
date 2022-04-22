@@ -2,14 +2,23 @@ import Region from '../components/UI/Region';
 import Wrapper from '../components/UI/Wrapper';
 import arrow from '../assets/css/img/arrow.svg';
 
-const FoodPackages = () => {
+const FoodPackages = (props) => {
+	console.log(props.kcalCount);
+	let dnevniPaket = 'Dnevni paket';
+	let nedeljniPaket = 'Nedeljni paket';
+	let mesecniPaket = 'Mesecni paket';
+	if (props.kcalCount !== '' && typeof props.kcalCount !== 'undefined') {
+		dnevniPaket = dnevniPaket + ' za: ' + props.kcalCount + 'kcal';
+		nedeljniPaket = nedeljniPaket + ' za: ' + props.kcalCount + 'kcal';
+		mesecniPaket = mesecniPaket + ' za: ' + props.kcalCount + 'kcal';
+	}
 	return (
 		<Region class={'food-packages--region'} background={'background-light'}>
 			<Wrapper>
 				<div className="[ food-packages ] [ grid ]">
 					<article className="[ stack ] [ box ] [ dashed ] [ border-title--wrapper ]">
 						<div className="[ card-header ] [ text-bold ] [ border-title ]">
-							Dnevni paket
+							{dnevniPaket}
 						</div>
 						<div className="card-content">
 							Sami ili uz pomoc nutricioniste sastavite mesecni,
@@ -36,7 +45,7 @@ const FoodPackages = () => {
 					</article>
 					<article className="[ stack ] [ box ] [ dashed ] [ border-title--wrapper ]">
 						<div className="[ card-header ] [ text-bold ] [ border-title ]">
-							Nedeljni paket
+							{nedeljniPaket}
 						</div>
 						<div className="card-content">
 							Sami ili uz pomoc nutricioniste sastavite mesecni,
@@ -63,7 +72,7 @@ const FoodPackages = () => {
 					</article>
 					<article className="[ stack ] [ box ] [ dashed ] [ border-title--wrapper ]">
 						<div className="[ card-header ] [ text-bold ] [ border-title ]">
-							Mesečni paket
+							{mesecniPaket}
 						</div>
 						<div className="card-content">
 							Sami ili uz pomoc nutricioniste sastavite mesecni,

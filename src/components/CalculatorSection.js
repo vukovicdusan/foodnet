@@ -1,6 +1,6 @@
 import { useEffect, useReducer, useRef } from 'react';
-import Region from '../components/UI/Region';
-import Wrapper from '../components/UI/Wrapper';
+import Region from './UI/Region';
+import Wrapper from './UI/Wrapper';
 import calculatorReducer from '../reducers/calculatorReducer';
 
 const calculatorInitialState = {
@@ -17,7 +17,7 @@ const calculatorInitialState = {
 // error: 'Molimo unesite godine između 15 i 80.'
 // error: 'Molimo unesite godine između 30kg i 250kg.'
 // error: 'Molimo unesite visinu između 100cm i 250cm.'
-const Calculator = () => {
+const Calculator = (props) => {
 	const [calculatorState, dispatch] = useReducer(
 		calculatorReducer,
 		calculatorInitialState
@@ -43,12 +43,8 @@ const Calculator = () => {
 
 	const submitHandler = (e) => {
 		e.preventDefault();
-		dispatch({ type: 'VALIDATE FORM' });
-		dispatch({
-			type: 'RESULT',
-		});
-
-		console.log(calculatorState);
+		dispatch({ type: 'VALIDATE FORM & RESULT' });
+		props.macroValuesHandler(calculatorState.result.BMPFinal);
 	};
 
 	let finalValidationAge =
