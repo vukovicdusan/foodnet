@@ -13,7 +13,10 @@ const FoodPackages = (props) => {
 		mesecniPaket = mesecniPaket + ' za: ' + props.kcalCount + 'kcal';
 	}
 	return (
-		<Region class={'food-packages--region'} background={'background-light'}>
+		<Region
+			regionClass={'food-packages--region'}
+			background={'background-light'}
+		>
 			<Wrapper>
 				<div className="[ food-packages ] [ grid ]">
 					<article className="[ stack ] [ box ] [ dashed ] [ border-title--wrapper ]">

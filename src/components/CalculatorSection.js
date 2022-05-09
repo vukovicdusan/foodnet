@@ -69,7 +69,7 @@ const Calculator = (props) => {
 		<Region background={'background-light'}>
 			<Wrapper>
 				<div className="[ calculator-section ] [ center-inner ] [ stack ]">
-					<h1>Calculator</h1>
+					<h2>Calculator</h2>
 					<form
 						onSubmit={submitHandler}
 						className="[ stack ] [ center-inner ]"

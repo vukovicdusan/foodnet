@@ -18,17 +18,23 @@ const Header = () => {
 					<nav>
 						<ul className="[ wrap ] [ text-bold ]" role="list">
 							<li>
-								<a href="">Prijavi Se</a>
+								<NavLink
+									to="/home"
+									activeClassName="navlink-active"
+								>
+									Početna
+								</NavLink>
 							</li>
 							<li>
-								<a href="">Prijavi Se</a>
+								<a href="">Paketi</a>
 							</li>
 							<li>
-								<a href="">Prijavi Se</a>
+								<a href="">Berza</a>
 							</li>
 							<li>
-								<a href="">Prijavi Se</a>
+								<a href="">Kalkulator</a>
 							</li>
+
 							<li>
 								{!isLoggedIn && (
 									<NavLink

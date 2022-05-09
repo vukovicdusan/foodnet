@@ -45,6 +45,7 @@ h1,
 h2,
 h3,
 h4,
+h5,
 p,
 figure,
 blockquote,
@@ -83,6 +84,7 @@ a {
 	text-decoration-color: var(--color-red);
 	text-underline-offset: 1px;
 	text-decoration: none;
+	transition: all 0.3s ease;
 }
 
 a:hover,
@@ -254,6 +256,23 @@ select:focus + .border-title {
 
 .background-dark {
 	background-color: var(--background-dark);
+}
+
+.background-dark p,
+.background-dark a,
+.background-dark h1,
+.background-dark h2,
+.background-dark h3,
+.background-dark h4,
+.background-dark h5 {
+	color: var(--text-light);
+}
+
+.background-dark a:hover {
+	text-decoration: underline;
+	color: var(--color-red);
+	text-decoration-color: var(--text-dark);
+	text-underline-offset: 2px;
 }
 
 .wrapper {
@@ -431,6 +450,24 @@ select:focus + .border-title {
 .stack-exception + * {
 	--stack-space: 5rem;
 } */
+
+/** ==== THE FRAME ==== */
+.frame {
+	--n: 16;
+	--d: 9;
+	aspect-ratio: var(--n) / var(--d);
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.frame > img,
+.frame > video {
+	inline-size: 100%;
+	block-size: 100%;
+	object-fit: cover;
+}
 
 /** ==== REPEL ==== **/
 
@@ -669,4 +706,134 @@ header {
 
 .food-packages .border-title--wrapper {
 	box-shadow: var(--box-shadow);
+}
+
+/** ==== MARKET SECTION ==== */
+.market-region {
+	--grid-gap: 0;
+}
+
+.market-region h2 {
+	margin-bottom: var(--s1);
+}
+
+.market-region a:hover {
+	text-decoration: none;
+	color: var(--text-light);
+}
+
+.market-region .frame {
+	--n: 1;
+	--d: 1;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: flex-start;
+	min-height: 100px;
+	position: relative;
+	padding: 1.5rem;
+	backface-visibility: hidden;
+	overflow: hidden;
+}
+
+.market-region .frame > * {
+	z-index: 1;
+}
+
+.market-region .frame::before,
+.market-region .frame::after {
+	content: '';
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.market-region .frame::before {
+	background: linear-gradient(
+		to top,
+		hsl(0 0% 0% / 0.79) 0%,
+		hsl(0 0% 0% / 0.787) 7.8%,
+		hsl(0 0% 0% / 0.779) 14.4%,
+		hsl(0 0% 0% / 0.765) 20.2%,
+		hsl(0 0% 0% / 0.744) 25.3%,
+		hsl(0 0% 0% / 0.717) 29.9%,
+		hsl(0 0% 0% / 0.683) 34.3%,
+		hsl(0 0% 0% / 0.641) 38.7%,
+		hsl(0 0% 0% / 0.592) 43.3%,
+		hsl(0 0% 0% / 0.534) 48.4%,
+		hsl(0 0% 0% / 0.468) 54.1%,
+		hsl(0 0% 0% / 0.393) 60.6%,
+		hsl(0 0% 0% / 0.31) 68.3%,
+		hsl(0 0% 0% / 0.216) 77.3%,
+		hsl(0 0% 0% / 0.113) 87.7%,
+		hsl(0 0% 0% / 0) 100%
+	);
+	transition: 300ms opacity linear;
+}
+
+.market-region .frame::after {
+	background: linear-gradient(
+		45deg,
+		hsl(338 81% 41% / 0.7) 0,
+		hsl(5 97% 63% / 0) 100%
+	);
+	opacity: 0;
+	transition: 300ms opacity linear;
+}
+
+.market-region .frame img {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: 0;
+	z-index: 0;
+	object-fit: cover;
+	filter: grayscale(1);
+	transition: filter 200ms ease, transform 250ms linear;
+}
+
+.market-region .frame h4 {
+	transition: 300ms transform ease;
+}
+
+.market-region .frame p {
+	opacity: 0;
+	transition: 300ms opacity linear, 300ms transform ease-in-out;
+}
+
+.market-region .frame p,
+.market-region .frame h4 {
+	transform: translateY(5ex);
+}
+
+.market-region .frame:focus {
+	outline: 0.5rem solid white;
+	outline-offset: -0.5rem;
+}
+
+.market-region .frame:hover :is(h4, p),
+.market-region .frame:focus :is(h4, p) {
+	transform: none;
+}
+
+.market-region .frame:hover p,
+.market-region .frame:focus p {
+	opacity: 1;
+	transition-delay: 200ms;
+}
+
+.market-region .frame:hover::after,
+.market-region .frame:focus::after,
+.market-region .frame:hover::before,
+.market-region .frame:focus::before {
+	opacity: 0.7;
+}
+
+.market-region .frame:hover img,
+.market-region .frame:focus img {
+	filter: grayscale(0);
+	transform: scale(1.05) rotate(1deg);
 }

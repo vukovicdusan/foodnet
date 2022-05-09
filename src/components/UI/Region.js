@@ -2,13 +2,13 @@ const Region = (props) => {
 	//class for the region component if some of the properties have to be overriden.
 	//background collor for the region component
 	let regionClass = '';
-	if (typeof props.class !== 'undefined') {
-		regionClass = props.class;
+	if (typeof props.regionClass !== 'undefined') {
+		regionClass = props.regionClass;
 	} else {
 		regionClass = '';
 	}
 	return (
-		<div
+		<article
 			className={
 				'[ region ]' +
 				'[ ' +
@@ -20,7 +20,7 @@ const Region = (props) => {
 			}
 		>
 			{props.children}
-		</div>
+		</article>
 	);
 };
 
