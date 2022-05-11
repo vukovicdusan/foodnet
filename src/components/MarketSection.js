@@ -1,58 +1,78 @@
 import Region from './UI/Region';
 import Wrapper from './UI/Wrapper';
-import profile1 from '../assets/css/img/profileImgs/1.jpg';
-import profile2 from '../assets/css/img/profileImgs/2.jpg';
-import profile3 from '../assets/css/img/profileImgs/3.jpg';
-import profile4 from '../assets/css/img/profileImgs/4.jpg';
-import profile5 from '../assets/css/img/profileImgs/5.jpg';
-const MarketSection = () => {
+import profileImg1 from '../assets/css/img/profileImgs/1.jpg';
+import profileImg2 from '../assets/css/img/profileImgs/2.jpg';
+import profileImg3 from '../assets/css/img/profileImgs/3.jpg';
+import profileImg4 from '../assets/css/img/profileImgs/4.jpg';
+import profileImg5 from '../assets/css/img/profileImgs/5.jpg';
+import { Link } from 'react-router-dom';
+
+let DUMMY_DATA = [
+	{
+		id: 1,
+		name: 'Miljko Vlajković',
+		type: 'Trener',
+		image: profileImg1,
+		price: '10€',
+		gender: 'male',
+	},
+	{
+		id: 2,
+		name: 'Vlajko Miljkovic',
+		type: 'Nutricionista',
+		image: profileImg2,
+		price: '15€',
+		gender: 'male',
+	},
+	{
+		id: 3,
+		name: 'Milko Didic',
+		type: 'Nutricionista',
+		image: profileImg3,
+		price: '10€',
+		gender: 'male',
+	},
+	{
+		id: 4,
+		name: 'Mara Sretenovic',
+		type: 'Trener',
+		image: profileImg4,
+		price: '20€',
+		gender: 'female',
+	},
+	{
+		id: 5,
+		name: 'Saša Marinkovic',
+		type: 'Trener',
+		image: profileImg5,
+		price: '5€',
+		gender: 'female',
+	},
+];
+const MarketSection = (props) => {
 	return (
 		<Region regionClass={'market-region'} background={'background-dark'}>
 			<Wrapper>
-				<h2>Berza</h2>
+				<div id="market-section">
+					<div className="dash-vertical" data-state="reversed"></div>
+					<h2>Berza</h2>
 
-				<ul role="list" className="grid">
-					<li>
-						<a className="frame" href="#">
-							<h4>Trener</h4>
-							<p>Miljko Vajković</p>
-							<p>Trener</p>
-							<img src={profile1} alt="profile image" />
-						</a>
-					</li>
-					<li>
-						<a className="frame" href="#">
-							<h4>Nutricionista</h4>
-							<p>Vajko Miljkovic</p>
-							<p>Trener</p>
-							<img src={profile2} alt="profile image" />
-						</a>
-					</li>
-					<li>
-						<a className="frame" href="#">
-							<h4>Trener</h4>
-							<p>Milko Didic</p>
-							<p>Trener</p>
-							<img src={profile3} alt="profile image" />
-						</a>
-					</li>
-					<li>
-						<a className="frame" href="#">
-							<h4>Nutricionista</h4>
-							<p>Marko Sretenovic</p>
-							<p>Trener</p>
-							<img src={profile4} alt="profile image" />
-						</a>
-					</li>
-					<li>
-						<a className="frame" href="#">
-							<h4>Trener</h4>
-							<p>Sasa Marinkovic</p>
-							<p>Trener</p>
-							<img src={profile5} alt="profile image" />
-						</a>
-					</li>
-				</ul>
+					<ul role="list" className="grid">
+						{DUMMY_DATA.map((coach) => (
+							<li key={coach.id}>
+								<Link
+									to={'/single-coach/' + coach.id}
+									className="[ frame ] [ no-show ]"
+								>
+									<h4>{coach.type}</h4>
+									<p>{coach.name}</p>
+									<p>{coach.price} po terminu</p>
+									<img src={coach.image} alt="profile" />
+								</Link>
+							</li>
+						))}
+					</ul>
+				</div>
 			</Wrapper>
 		</Region>
 	);

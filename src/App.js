@@ -10,6 +10,7 @@ import LoginRegister from './components/LoginRegister';
 import UserProfile from './components/UserProfile';
 // import FoodPackages from './components/FoodPackages';
 import Home from './pages/Home';
+import SingleCoach from './pages/SingleCoach';
 
 function App() {
 	return (
@@ -29,6 +30,9 @@ function App() {
 					</Route>
 					<Route path="/home" exact>
 						<Home></Home>
+					</Route>
+					<Route path="/single-coach/:coachId">
+						<SingleCoach></SingleCoach>
 					</Route>
 				</Switch>
 			</main>

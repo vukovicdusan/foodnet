@@ -18,7 +18,7 @@ const FoodPackages = (props) => {
 			background={'background-light'}
 		>
 			<Wrapper>
-				<div className="[ food-packages ] [ grid ]">
+				<div id="food-packages" className="[ food-packages ] [ grid ]">
 					<article className="[ stack ] [ box ] [ dashed ] [ border-title--wrapper ]">
 						<div className="[ card-header ] [ text-bold ] [ border-title ]">
 							{dnevniPaket}

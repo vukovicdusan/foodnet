@@ -10,7 +10,11 @@ const Home = () => {
 	const macroValuesHandler = (val) => {
 		setMacroValueState(val);
 	};
-	console.log(macroValuesState);
+	const [coachState, setCoachState] = useState('');
+	const coachHandler = (personInfo) => {
+		setCoachState(personInfo);
+	};
+	console.log(coachState);
 
 	return (
 		<div className="home">
@@ -18,7 +22,7 @@ const Home = () => {
 			<OfferSection></OfferSection>
 			<Calculator macroValuesHandler={macroValuesHandler}></Calculator>
 			<FoodPackages kcalCount={macroValuesState}></FoodPackages>
-			<MarketSection></MarketSection>
+			<MarketSection coachHandler={coachHandler}></MarketSection>
 		</div>
 	);
 };

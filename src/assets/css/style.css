@@ -318,6 +318,10 @@ select:focus + .border-title {
 	margin-block-start: var(--s4, 3rem) !important;
 }
 
+.bold {
+	font-weight: bold;
+}
+
 /** ==== VISUALLY HIDDEN ==== */
 
 .visually-hidden {
@@ -451,6 +455,24 @@ select:focus + .border-title {
 	--stack-space: 5rem;
 } */
 
+/** ==== THE SIDEBAR ==== */
+
+.with-sidebar {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--s1);
+}
+
+.with-sidebar > :first-child {
+	flex-grow: 1;
+}
+
+.with-sidebar > :last-child {
+	flex-basis: 0;
+	flex-grow: 999;
+	min-inline-size: 20%;
+}
+
 /** ==== THE FRAME ==== */
 .frame {
 	--n: 16;
@@ -477,6 +499,23 @@ select:focus + .border-title {
 	justify-content: space-between;
 	align-items: center;
 	gap: var(--repel-space, clamp(1.375rem, 1.2rem + 0.89vw, 2rem));
+}
+
+/** ==== THE SWITCHER ==== */
+.switcher {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--s1);
+}
+
+.switcher > * {
+	flex-grow: 1;
+	flex-basis: calc((30rem - 100%) * 999);
+}
+
+.switcher > :nth-last-child(n + 5),
+.switcher > :nth-last-child(n + 5) ~ * {
+	flex-basis: 100%;
 }
 
 /** ==== CLUSTER - WRAP ==== **/
@@ -634,7 +673,7 @@ header {
 	padding: 0.5rem;
 }
 
-/** HERO */
+/** ==== HERO ==== */
 
 .hero {
 	--stack-space: 0.5rem;
@@ -709,6 +748,7 @@ header {
 }
 
 /** ==== MARKET SECTION ==== */
+
 .market-region {
 	--grid-gap: 0;
 }
@@ -836,4 +876,49 @@ header {
 .market-region .frame:focus img {
 	filter: grayscale(0);
 	transform: scale(1.05) rotate(1deg);
+}
+
+/** ==== SINGLE COACH SECTION ==== */
+.single-coach--image-side {
+	position: relative;
+}
+
+.single-coach--region h1 {
+	font-size: var(--s2);
+}
+
+.single-coach--region .frame {
+	--n: 1;
+	--d: 1;
+	flex-direction: column;
+	/* border: solid black; */
+	position: relative;
+	overflow: visible;
+}
+
+.single-coach--region h4,
+.single-coach--region h5 {
+	border: dashed var(--color-red) 1px;
+	display: inline;
+	padding: var(--s-3);
+}
+
+.single-coach--region .stack {
+	--stack-space: 0.2rem;
+}
+.single-coach--image-side {
+	max-inline-size: 25rem;
+}
+.single-coach--image-side img {
+	border: dashed var(--background-dark);
+}
+
+.single-coach--content-side .stack,
+.single-coach--content-side.stack {
+	--stack-space: 1rem;
+}
+
+.single-coach--region input,
+.single-coach--region select {
+	min-inline-size: 15rem;
 }

@@ -2,6 +2,7 @@ import Wrapper from './UI/Wrapper';
 import logo from '../assets/css/img/chili-pepper.png';
 import chevronDown from '../assets/css/img/chevron-down.svg';
 import { NavLink, Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 import AuthContext from '../store/auth-context';
 import { useContext } from 'react';
 
@@ -26,13 +27,19 @@ const Header = () => {
 								</NavLink>
 							</li>
 							<li>
-								<a href="">Paketi</a>
+								<HashLink to="/home/#food-packages">
+									Paketi
+								</HashLink>
 							</li>
 							<li>
-								<a href="">Berza</a>
+								<HashLink to="/home/#market-section">
+									Berza
+								</HashLink>
 							</li>
 							<li>
-								<a href="">Kalkulator</a>
+								<HashLink to="/home/#calculator-section">
+									Kalkulator
+								</HashLink>
 							</li>
 
 							<li>

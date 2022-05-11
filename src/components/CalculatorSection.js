@@ -68,7 +68,10 @@ const Calculator = (props) => {
 	return (
 		<Region background={'background-light'}>
 			<Wrapper>
-				<div className="[ calculator-section ] [ center-inner ] [ stack ]">
+				<div
+					id="calculator-section"
+					className="[ calculator-section ] [ center-inner ] [ stack ]"
+				>
 					<h2>Calculator</h2>
 					<form
 						onSubmit={submitHandler}
