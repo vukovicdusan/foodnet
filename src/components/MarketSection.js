@@ -150,6 +150,10 @@ const MarketSection = (props) => {
 		));
 	}
 
+	const dropdownToggler = (e) => {
+		e.preventDefault();
+	};
+
 	return (
 		<Region regionClass={'market-region'} background={'background-dark'}>
 			<Wrapper>
@@ -199,7 +203,10 @@ const MarketSection = (props) => {
 							</svg>
 							Filter
 						</span>
-						<ul className="[ dropdown-menu ] [ stack ] [ box ]">
+						<ul
+							onClick={dropdownToggler}
+							className="[ dropdown-menu ] [ stack ] [ box ]"
+						>
 							<button onClick={filterHandler} className="button">
 								Sve
 							</button>
