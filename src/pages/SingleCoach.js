@@ -12,7 +12,7 @@ let DUMMY_DATA = [
 		name: 'Miljko Vlajković',
 		type: 'Trener',
 		image: profileImg1,
-		price: '10€',
+		price: 10,
 		gender: 'male',
 	},
 	{
@@ -20,7 +20,7 @@ let DUMMY_DATA = [
 		name: 'Vlajko Miljkovic',
 		type: 'Nutricionista',
 		image: profileImg2,
-		price: '15€',
+		price: 15,
 		gender: 'male',
 	},
 	{
@@ -28,7 +28,7 @@ let DUMMY_DATA = [
 		name: 'Milko Didic',
 		type: 'Nutricionista',
 		image: profileImg3,
-		price: '10€',
+		price: 10,
 		gender: 'male',
 	},
 	{
@@ -36,7 +36,7 @@ let DUMMY_DATA = [
 		name: 'Mara Sretenovic',
 		type: 'Trener',
 		image: profileImg4,
-		price: '20€',
+		price: 20,
 		gender: 'female',
 	},
 	{
@@ -44,7 +44,7 @@ let DUMMY_DATA = [
 		name: 'Saša Marinkovic',
 		type: 'Trener',
 		image: profileImg5,
-		price: '5€',
+		price: 5,
 		gender: 'female',
 	},
 ];
@@ -104,17 +104,22 @@ const SingleCoach = (props) => {
 								</label>
 							</div>
 							<div className="border-title--wrapper">
-								<input
-									id="coach-message--gender"
-									name="gender"
-									type="text"
-								/>
-								<label
-									className="border-title"
-									htmlFor="coach-message--gender"
-								>
-									Pol
-								</label>
+								<div className="select">
+									<select
+										id="coach-message--gender"
+										name="gender"
+										type="text"
+									>
+										<option value="male">Muški</option>
+										<option value="female">Ženski</option>
+									</select>
+									<label
+										className="border-title"
+										htmlFor="coach-message--gender"
+									>
+										Pol
+									</label>
+								</div>
 							</div>
 							<div className="border-title--wrapper">
 								<div className="select">
@@ -132,13 +137,13 @@ const SingleCoach = (props) => {
 											Održavanje i zdravlje
 										</option>
 									</select>
+									<label
+										className="border-title"
+										htmlFor="coach-message--goal"
+									>
+										Cilj
+									</label>
 								</div>
-								<label
-									className="border-title"
-									htmlFor="coach-message--goal"
-								>
-									Cilj
-								</label>
 							</div>
 							<button className="button">Pošalji</button>
 						</form>

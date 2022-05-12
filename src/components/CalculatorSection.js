@@ -95,13 +95,13 @@ const Calculator = (props) => {
 										Održavanje i zdravlje
 									</option>
 								</select>
+								<label
+									className="border-title"
+									htmlFor="calculator-goal"
+								>
+									Cilj
+								</label>
 							</div>
-							<label
-								className="border-title"
-								htmlFor="calculator-goal"
-							>
-								Cilj
-							</label>
 						</div>
 						<div className="border-title--wrapper">
 							<div className="select">
@@ -113,13 +113,13 @@ const Calculator = (props) => {
 									<option value="male">Muški</option>
 									<option value="female">Ženski</option>
 								</select>
+								<label
+									className="border-title"
+									htmlFor="calculator-gender"
+								>
+									Pol
+								</label>
 							</div>
-							<label
-								className="border-title"
-								htmlFor="calculator-gender"
-							>
-								Pol
-							</label>
 						</div>
 						<div className="border-title--wrapper">
 							<input
@@ -194,13 +194,13 @@ const Calculator = (props) => {
 										Ekstremno aktivan
 									</option>
 								</select>
+								<label
+									className="border-title"
+									htmlFor="calculator-activity"
+								>
+									Aktivnost
+								</label>
 							</div>
-							<label
-								className="border-title"
-								htmlFor="calculator-activity"
-							>
-								Aktivnost
-							</label>
 						</div>
 						<div className="border-title--wrapper">
 							<div className="select">
@@ -213,13 +213,13 @@ const Calculator = (props) => {
 									<option value="0.4">Srednje</option>
 									<option value="0.85">Brže</option>
 								</select>
+								<label
+									className="border-title"
+									htmlFor="calculator-pace"
+								>
+									Brzina
+								</label>
 							</div>
-							<label
-								className="border-title"
-								htmlFor="calculator-pace"
-							>
-								Brzina
-							</label>
 						</div>
 						<button className="button">Izračunaj</button>
 						<div
