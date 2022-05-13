@@ -155,75 +155,75 @@ const MarketSection = (props) => {
 	};
 
 	return (
-		<Region regionClass={'market-region'} background={'background-dark'}>
+		<Region regionId={'market-region'} background={'background-dark'}>
 			<Wrapper>
-				<div id="[ market-section ]">
-					<div className="dash-vertical" data-state="reversed"></div>
-					<h2>Berza</h2>
-					<div className="[ wrap ]">
-						<button
-							onClick={filterHandler}
-							className="button"
-							data-state="reversed"
+				{/* <div id="[ market-section ]"> */}
+				<div className="dash-vertical" data-state="reversed"></div>
+				<h2>Berza</h2>
+				<div className="[ wrap ]">
+					<button
+						onClick={filterHandler}
+						className="button"
+						data-state="reversed"
+					>
+						Sve
+					</button>
+					<button
+						id="treneri"
+						onClick={filterHandler}
+						className="button"
+						data-state="reversed"
+						filter-state="treneri"
+					>
+						Treneri
+					</button>
+					<button
+						onClick={filterHandler}
+						className="button"
+						data-state="reversed"
+					>
+						Nutricionisti
+					</button>
+					<button
+						onClick={filterHandler}
+						className="button"
+						data-state="reversed"
+					>
+						Trener/Nutricionisti
+					</button>
+				</div>
+				<div className="dropdown-toggle">
+					<span className="with-icon">
+						<svg
+							aria-hidden="true"
+							focusable="false"
+							className="icon"
 						>
+							<use href={chevronDown + '#chevron-down'}></use>
+						</svg>
+						Filter
+					</span>
+					<ul
+						onClick={dropdownToggler}
+						className="[ dropdown-menu ] [ stack ] [ box ]"
+					>
+						<button onClick={filterHandler} className="button">
 							Sve
 						</button>
-						<button
-							id="treneri"
-							onClick={filterHandler}
-							className="button"
-							data-state="reversed"
-							filter-state="treneri"
-						>
+						<button onClick={filterHandler} className="button">
 							Treneri
 						</button>
-						<button
-							onClick={filterHandler}
-							className="button"
-							data-state="reversed"
-						>
+						<button onClick={filterHandler} className="button">
 							Nutricionisti
 						</button>
-						<button
-							onClick={filterHandler}
-							className="button"
-							data-state="reversed"
-						>
+						<button onClick={filterHandler} className="button">
 							Trener/Nutricionisti
 						</button>
-					</div>
-					<div className="dropdown-toggle">
-						<span className="with-icon">
-							<svg
-								aria-hidden="true"
-								focusable="false"
-								className="icon"
-							>
-								<use href={chevronDown + '#chevron-down'}></use>
-							</svg>
-							Filter
-						</span>
-						<ul
-							onClick={dropdownToggler}
-							className="[ dropdown-menu ] [ stack ] [ box ]"
-						>
-							<button onClick={filterHandler} className="button">
-								Sve
-							</button>
-							<button onClick={filterHandler} className="button">
-								Treneri
-							</button>
-							<button onClick={filterHandler} className="button">
-								Nutricionisti
-							</button>
-							<button onClick={filterHandler} className="button">
-								Trener/Nutricionisti
-							</button>
-						</ul>
-					</div>
+					</ul>
+				</div>
 
-					<ul role="list" className="[ grid ] [ margin-top-2 ]">
-						{/* {DUMMY_DATA.map((coach) => (
+				<ul role="list" className="[ grid ] [ margin-top-2 ]">
+					{/* {DUMMY_DATA.map((coach) => (
 							<li key={coach.id}>
 								<Link
 									to={'/single-coach/' + coach.id}
@@ -236,9 +236,9 @@ const MarketSection = (props) => {
 								</Link>
 							</li>
 						))} */}
-						{coachesList}
-					</ul>
-				</div>
+					{coachesList}
+				</ul>
+				{/* </div> */}
 			</Wrapper>
 		</Region>
 	);

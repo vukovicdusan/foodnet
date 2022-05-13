@@ -55,7 +55,7 @@ const SingleCoach = (props) => {
 
 	return (
 		<Region
-			regionClass={'single-coach--region'}
+			regionId={'single-coach--region'}
 			background={'background-light'}
 		>
 			<Wrapper>

@@ -1,23 +1,16 @@
 const Region = (props) => {
 	//class for the region component if some of the properties have to be overriden.
 	//background collor for the region component
-	let regionClass = '';
-	if (typeof props.regionClass !== 'undefined') {
-		regionClass = props.regionClass;
+	let regionId = '';
+	if (typeof props.regionId !== 'undefined') {
+		regionId = props.regionId;
 	} else {
-		regionClass = '';
+		regionId = '';
 	}
 	return (
 		<article
-			className={
-				'[ region ]' +
-				'[ ' +
-				props.background +
-				' ]' +
-				'[ ' +
-				regionClass +
-				' ]'
-			}
+			id={regionId}
+			className={'[ region ]' + '[ ' + props.background + ' ]'}
 		>
 			{props.children}
 		</article>

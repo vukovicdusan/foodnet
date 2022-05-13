@@ -32,7 +32,7 @@ const Header = () => {
 								</HashLink>
 							</li>
 							<li>
-								<HashLink to="/home/#market-section">
+								<HashLink to="/home/#market-region">
 									Berza
 								</HashLink>
 							</li>

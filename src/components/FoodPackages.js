@@ -14,7 +14,7 @@ const FoodPackages = (props) => {
 	}
 	return (
 		<Region
-			regionClass={'food-packages--region'}
+			regionId={'food-packages--region'}
 			background={'background-light'}
 		>
 			<Wrapper>
