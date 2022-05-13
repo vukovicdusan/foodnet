@@ -165,6 +165,27 @@ h6 {
 	font-size: var(--s0);
 }
 
+@media (max-width: 450px) {
+	h1 {
+		font-size: var(--s3);
+	}
+	h2 {
+		font-size: var(--s2);
+	}
+	h3 {
+		font-size: var(--s1);
+	}
+	h4 {
+		font-size: var(--s0);
+	}
+	h5 {
+		font-size: var(--s0);
+	}
+	h6 {
+		font-size: var(--s0);
+	}
+}
+
 :focus {
 	outline: 1px dashed var(--color-red);
 	outline-offset: 0.25rem;
