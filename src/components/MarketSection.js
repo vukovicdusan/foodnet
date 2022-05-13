@@ -160,7 +160,7 @@ const MarketSection = (props) => {
 				{/* <div id="[ market-section ]"> */}
 				<div className="dash-vertical" data-state="reversed"></div>
 				<h2>Berza</h2>
-				<div className="[ wrap ]">
+				<div className="[ wrap ] [ grid-frame-filter ]">
 					<button
 						onClick={filterHandler}
 						className="button"
@@ -191,38 +191,41 @@ const MarketSection = (props) => {
 					>
 						Trener/Nutricionisti
 					</button>
-				</div>
-				<div className="dropdown-toggle">
-					<span className="with-icon">
-						<svg
-							aria-hidden="true"
-							focusable="false"
-							className="icon"
+					{/* <div className="dropdown-toggle">
+						<span className="with-icon">
+							<svg
+								aria-hidden="true"
+								focusable="false"
+								className="icon"
+							>
+								<use href={chevronDown + '#chevron-down'}></use>
+							</svg>
+							Filter
+						</span>
+						<ul
+							onClick={dropdownToggler}
+							className="[ dropdown-menu ] [ stack ] [ box ]"
 						>
-							<use href={chevronDown + '#chevron-down'}></use>
-						</svg>
-						Filter
-					</span>
-					<ul
-						onClick={dropdownToggler}
-						className="[ dropdown-menu ] [ stack ] [ box ]"
-					>
-						<button onClick={filterHandler} className="button">
-							Sve
-						</button>
-						<button onClick={filterHandler} className="button">
-							Treneri
-						</button>
-						<button onClick={filterHandler} className="button">
-							Nutricionisti
-						</button>
-						<button onClick={filterHandler} className="button">
-							Trener/Nutricionisti
-						</button>
-					</ul>
+							<button onClick={filterHandler} className="button">
+								Sve
+							</button>
+							<button onClick={filterHandler} className="button">
+								Treneri
+							</button>
+							<button onClick={filterHandler} className="button">
+								Nutricionisti
+							</button>
+							<button onClick={filterHandler} className="button">
+								Trener/Nutricionisti
+							</button>
+						</ul>
+					</div> */}
 				</div>
 
-				<ul role="list" className="[ grid ] [ margin-top-2 ]">
+				<ul
+					role="list"
+					className="[ grid ] [ margin-top-2 ] [ grid-frame ]"
+				>
 					{/* {DUMMY_DATA.map((coach) => (
 							<li key={coach.id}>
 								<Link

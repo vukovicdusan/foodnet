@@ -11,6 +11,7 @@ import UserProfile from './components/UserProfile';
 // import FoodPackages from './components/FoodPackages';
 import Home from './pages/Home';
 import SingleCoach from './pages/SingleCoach';
+import SinglePackage from './pages/SinglePackage';
 
 function App() {
 	return (
@@ -33,6 +34,9 @@ function App() {
 					</Route>
 					<Route path="/single-coach/:coachId">
 						<SingleCoach></SingleCoach>
+					</Route>
+					<Route path="/single-package">
+						<SinglePackage></SinglePackage>
 					</Route>
 				</Switch>
 			</main>

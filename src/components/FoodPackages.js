@@ -1,6 +1,7 @@
 import Region from '../components/UI/Region';
 import Wrapper from '../components/UI/Wrapper';
 import arrow from '../assets/css/img/arrow.svg';
+import { Link } from 'react-router-dom';
 
 const FoodPackages = (props) => {
 	console.log(props.kcalCount);
@@ -29,8 +30,8 @@ const FoodPackages = (props) => {
 							povecanja, smanjenja ili odrzanja telesne mase.
 							Obroci vam stizu na kucnu adresu dnevno.
 						</div>
-						<a
-							href="/"
+						<Link
+							to={'/single-package'}
 							tabIndex="0"
 							className="[ card-footer ] [ card-button ]"
 						>
@@ -44,7 +45,7 @@ const FoodPackages = (props) => {
 									<use href={arrow + '#arrow'}></use>
 								</svg>
 							</span>
-						</a>
+						</Link>
 					</article>
 					<article className="[ stack ] [ box ] [ dashed ] [ border-title--wrapper ]">
 						<div className="[ card-header ] [ text-bold ] [ border-title ]">
@@ -56,8 +57,8 @@ const FoodPackages = (props) => {
 							povecanja, smanjenja ili odrzanja telesne mase.
 							Obroci vam stizu na kucnu adresu dnevno.
 						</div>
-						<a
-							href="/"
+						<Link
+							to={'/single-package'}
 							tabIndex="0"
 							className="[ card-footer ] [ card-button ]"
 						>
@@ -71,7 +72,7 @@ const FoodPackages = (props) => {
 									<use href={arrow + '#arrow'}></use>
 								</svg>
 							</span>
-						</a>
+						</Link>
 					</article>
 					<article className="[ stack ] [ box ] [ dashed ] [ border-title--wrapper ]">
 						<div className="[ card-header ] [ text-bold ] [ border-title ]">
@@ -83,8 +84,8 @@ const FoodPackages = (props) => {
 							povecanja, smanjenja ili odrzanja telesne mase.
 							Obroci vam stizu na kucnu adresu dnevno.
 						</div>
-						<a
-							href="/"
+						<Link
+							to={'/single-package'}
 							tabIndex="0"
 							className="[ card-footer ] [ card-button ]"
 						>
@@ -98,7 +99,7 @@ const FoodPackages = (props) => {
 									<use href={arrow + '#arrow'}></use>
 								</svg>
 							</span>
-						</a>
+						</Link>
 					</article>
 				</div>
 				<div className="dash-vertical"></div>
