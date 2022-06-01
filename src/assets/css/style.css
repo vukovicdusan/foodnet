@@ -764,6 +764,10 @@ header {
 	--grid-gap: 2rem;
 }
 
+#food-packages--region {
+	--stack-justify: space-between;
+}
+
 .food-packages .border-title {
 	--border-title--top: -13px;
 	top: -13px;
@@ -966,7 +970,7 @@ header {
 	padding: var(--s-3);
 }
 
-#single-coach--region .stack {
+.single-coach--image-side .stack {
 	--stack-space: 0.2rem;
 }
 .single-coach--image-side {

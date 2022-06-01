@@ -7,12 +7,12 @@ import mealImg4 from '../assets/css/img/mealImgs/mealImg4.jpg';
 import mealImg5 from '../assets/css/img/mealImgs/mealImg5.jpg';
 import chevronDown from '../assets/css/img/chevron-down.svg';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const DUMMY_MEALS = [
 	{
 		id: 1,
-		name: 'Przenice sa borovnicama',
+		name: 'Prženice sa borovnicama',
 		type: 'Doručak',
 		image: mealImg1,
 		price: 10,
@@ -20,7 +20,7 @@ const DUMMY_MEALS = [
 	{
 		id: 2,
 		name: 'Barena jaja sa povrćem',
-		type: 'Ručak',
+		type: 'Doručak',
 		image: mealImg2,
 		price: 15,
 	},

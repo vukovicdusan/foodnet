@@ -7,7 +7,7 @@ const FoodPackages = (props) => {
 	console.log(props.kcalCount);
 	let dnevniPaket = 'Dnevni paket';
 	let nedeljniPaket = 'Nedeljni paket';
-	let mesecniPaket = 'Mesecni paket';
+	let mesecniPaket = 'Mesečni paket';
 	if (props.kcalCount !== '' && typeof props.kcalCount !== 'undefined') {
 		dnevniPaket = dnevniPaket + ' za: ' + props.kcalCount + 'kcal';
 		nedeljniPaket = nedeljniPaket + ' za: ' + props.kcalCount + 'kcal';
@@ -25,10 +25,10 @@ const FoodPackages = (props) => {
 							{dnevniPaket}
 						</div>
 						<div className="card-content">
-							Sami ili uz pomoc nutricioniste sastavite mesecni,
-							nedeljni ili dnevni plan obroka koji ce dovesti do
-							povecanja, smanjenja ili odrzanja telesne mase.
-							Obroci vam stizu na kucnu adresu dnevno.
+							Sami ili uz pomoć nutricioniste sastavite dnevni
+							plan obroka koji će dovesti do povećanja, smanjenja
+							ili održanja telesne mase. Obroci vam stižu na kućnu
+							adresu dnevno.
 						</div>
 						<Link
 							to={'/single-package'}
@@ -52,10 +52,10 @@ const FoodPackages = (props) => {
 							{nedeljniPaket}
 						</div>
 						<div className="card-content">
-							Sami ili uz pomoc nutricioniste sastavite mesecni,
-							nedeljni ili dnevni plan obroka koji ce dovesti do
-							povecanja, smanjenja ili odrzanja telesne mase.
-							Obroci vam stizu na kucnu adresu dnevno.
+							Sami ili uz pomoć nutricioniste sastavite nedeljni
+							plan obroka koji će dovesti do povećanja, smanjenja
+							ili održanja telesne mase. Obroci vam stižu na kućnu
+							adresu dnevno.
 						</div>
 						<Link
 							to={'/single-package'}
@@ -79,10 +79,10 @@ const FoodPackages = (props) => {
 							{mesecniPaket}
 						</div>
 						<div className="card-content">
-							Sami ili uz pomoc nutricioniste sastavite mesecni,
-							nedeljni ili dnevni plan obroka koji ce dovesti do
-							povecanja, smanjenja ili odrzanja telesne mase.
-							Obroci vam stizu na kucnu adresu dnevno.
+							Sami ili uz pomoć nutricioniste sastavite mesečni
+							plan obroka koji će dovesti do povećanja, smanjenja
+							ili održanja telesne mase. Obroci vam stižu na kućnu
+							adresu dnevno.
 						</div>
 						<Link
 							to={'/single-package'}

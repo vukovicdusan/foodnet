@@ -1,58 +1,19 @@
+import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import profileImg1 from '../assets/css/img/profileImgs/1.jpg';
-import profileImg2 from '../assets/css/img/profileImgs/2.jpg';
-import profileImg3 from '../assets/css/img/profileImgs/3.jpg';
-import profileImg4 from '../assets/css/img/profileImgs/4.jpg';
-import profileImg5 from '../assets/css/img/profileImgs/5.jpg';
 import Region from '../components/UI/Region';
 import Wrapper from '../components/UI/Wrapper';
-let DUMMY_DATA = [
-	{
-		id: 1,
-		name: 'Miljko Vlajković',
-		type: 'Trener',
-		image: profileImg1,
-		price: 10,
-		gender: 'male',
-	},
-	{
-		id: 2,
-		name: 'Vlajko Miljkovic',
-		type: 'Nutricionista',
-		image: profileImg2,
-		price: 15,
-		gender: 'male',
-	},
-	{
-		id: 3,
-		name: 'Milko Didic',
-		type: 'Nutricionista',
-		image: profileImg3,
-		price: 10,
-		gender: 'male',
-	},
-	{
-		id: 4,
-		name: 'Mara Sretenovic',
-		type: 'Trener',
-		image: profileImg4,
-		price: 20,
-		gender: 'female',
-	},
-	{
-		id: 5,
-		name: 'Saša Marinkovic',
-		type: 'Trener',
-		image: profileImg5,
-		price: 5,
-		gender: 'female',
-	},
-];
+import CoachesContext from '../store/coaches-context';
+
 const SingleCoach = (props) => {
 	const params = useParams();
+	const { coachesState } = useContext(CoachesContext);
+	// let singleId = params.coachId;
 
-	const singleCoach = DUMMY_DATA.find((coach) => coach.id == params.coachId);
-
+	const singleCoach = coachesState.find(
+		(coach) => coach.id == params.coachId
+	);
+	console.log(singleCoach);
+	console.log(coachesState);
 	return (
 		<Region
 			regionId={'single-coach--region'}
@@ -65,7 +26,10 @@ const SingleCoach = (props) => {
 							<img src={singleCoach.image} alt="coach" />
 						</div>
 						<div className="[ stack ] [ margin-top-1 ]">
-							<h4>{singleCoach.type}</h4>
+							<h4>
+								{singleCoach.type.charAt(0).toUpperCase() +
+									singleCoach.type.slice(1)}
+							</h4>
 							<p className="bold">{singleCoach.name}</p>
 							<p className="color-red">
 								{singleCoach.price} po terminu
