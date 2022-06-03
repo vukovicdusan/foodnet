@@ -7,7 +7,9 @@ import mealImg4 from '../assets/css/img/mealImgs/mealImg4.jpg';
 import mealImg5 from '../assets/css/img/mealImgs/mealImg5.jpg';
 import chevronDown from '../assets/css/img/chevron-down.svg';
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
+import { useParams } from 'react-router-dom';
+import AuthContext from '../store/auth-context';
 
 const DUMMY_MEALS = [
 	{
@@ -48,6 +50,9 @@ const DUMMY_MEALS = [
 ];
 
 const SinglePackage = () => {
+	const authContext = useContext(AuthContext);
+	const kcalCount = useParams();
+	// console.log(kcalCount);
 	const [filterState, setFilterState] = useState('sve');
 
 	const filterHandler = (e) => {
@@ -110,6 +115,7 @@ const SinglePackage = () => {
 			background={'background-light'}
 		>
 			<Wrapper>
+				<h1>{authContext.kcalAmount + 'kcal'}</h1>
 				<div className="[ wrap ] [ grid-frame-filter ]">
 					<button
 						onClick={filterHandler}
@@ -171,12 +177,12 @@ const SinglePackage = () => {
 						</ul>
 					</div> */}
 				</div>
-				<div className="grid">
-					<ul
-						role="list"
-						className="[ grid ] [ margin-top-2 ] [ grid-frame ]"
-					>
-						{/* <li key={meal.id}>
+				{/* <div className="grid"> */}
+				<ul
+					role="list"
+					className="[ grid ] [ margin-top-2 ] [ grid-frame ]"
+				>
+					{/* <li key={meal.id}>
 							<Link
 								to={'/single-meal/' + meal.id}
 								className="[ frame ] [ no-show ]"
@@ -187,9 +193,9 @@ const SinglePackage = () => {
 								<img src={meal.image} alt="meal" />
 							</Link>
 						</li> */}
-						{mealsList}
-					</ul>
-				</div>
+					{mealsList}
+				</ul>
+				{/* </div> */}
 			</Wrapper>
 		</Region>
 	);

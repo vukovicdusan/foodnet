@@ -1,7 +1,8 @@
-import { useEffect, useReducer, useRef } from 'react';
+import { useContext, useEffect, useReducer, useRef } from 'react';
 import Region from './UI/Region';
 import Wrapper from './UI/Wrapper';
 import calculatorReducer from '../reducers/calculatorReducer';
+import AuthContext from '../store/auth-context';
 
 const calculatorInitialState = {
 	goal: { inputValue: 'suficit', valid: true, touched: false },
@@ -18,6 +19,7 @@ const calculatorInitialState = {
 // error: 'Molimo unesite godine između 30kg i 250kg.'
 // error: 'Molimo unesite visinu između 100cm i 250cm.'
 const Calculator = (props) => {
+	const authContext = useContext(AuthContext);
 	const [calculatorState, dispatch] = useReducer(
 		calculatorReducer,
 		calculatorInitialState
@@ -44,7 +46,8 @@ const Calculator = (props) => {
 	const submitHandler = (e) => {
 		e.preventDefault();
 		dispatch({ type: 'VALIDATE FORM & RESULT' });
-		props.macroValuesHandler(calculatorState.result.BMPFinal);
+		// props.macroValuesHandler(calculatorState.result.BMPFinal);
+		authContext.kcalHandler(calculatorState.result.BMPFinal);
 	};
 
 	let finalValidationAge =

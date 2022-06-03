@@ -2,16 +2,23 @@ import Region from '../components/UI/Region';
 import Wrapper from '../components/UI/Wrapper';
 import arrow from '../assets/css/img/arrow.svg';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import AuthContext from '../store/auth-context';
 
 const FoodPackages = (props) => {
-	console.log(props.kcalCount);
+	// console.log(authContext.kcalAmount);
+	const authContext = useContext(AuthContext);
 	let dnevniPaket = 'Dnevni paket';
 	let nedeljniPaket = 'Nedeljni paket';
 	let mesecniPaket = 'Mesečni paket';
-	if (props.kcalCount !== '' && typeof props.kcalCount !== 'undefined') {
-		dnevniPaket = dnevniPaket + ' za: ' + props.kcalCount + 'kcal';
-		nedeljniPaket = nedeljniPaket + ' za: ' + props.kcalCount + 'kcal';
-		mesecniPaket = mesecniPaket + ' za: ' + props.kcalCount + 'kcal';
+	if (
+		authContext.kcalAmount &&
+		typeof authContext.kcalAmount !== 'undefined'
+	) {
+		dnevniPaket = dnevniPaket + ' za: ' + authContext.kcalAmount + 'kcal';
+		nedeljniPaket =
+			nedeljniPaket + ' za: ' + authContext.kcalAmount + 'kcal';
+		mesecniPaket = mesecniPaket + ' za: ' + authContext.kcalAmount + 'kcal';
 	}
 	return (
 		<Region
@@ -31,7 +38,7 @@ const FoodPackages = (props) => {
 							adresu dnevno.
 						</div>
 						<Link
-							to={'/single-package'}
+							to={'/single-package/' + authContext.kcalAmount}
 							tabIndex="0"
 							className="[ card-footer ] [ card-button ]"
 						>
@@ -58,7 +65,7 @@ const FoodPackages = (props) => {
 							adresu dnevno.
 						</div>
 						<Link
-							to={'/single-package'}
+							to={'/single-package/' + authContext.kcalAmount}
 							tabIndex="0"
 							className="[ card-footer ] [ card-button ]"
 						>
@@ -85,7 +92,7 @@ const FoodPackages = (props) => {
 							adresu dnevno.
 						</div>
 						<Link
-							to={'/single-package'}
+							to={'/single-package/' + authContext.kcalAmount}
 							tabIndex="0"
 							className="[ card-footer ] [ card-button ]"
 						>

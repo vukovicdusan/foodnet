@@ -936,7 +936,7 @@ header {
 
 #market-region .grid,
 #single-package--region .grid {
-	grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr));
 }
 
 /* @media (max-width: 475px) {
@@ -958,7 +958,6 @@ header {
 	--n: 1;
 	--d: 1;
 	flex-direction: column;
-	/* border: solid black; */
 	position: relative;
 	overflow: visible;
 }
