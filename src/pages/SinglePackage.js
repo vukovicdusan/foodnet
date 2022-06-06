@@ -115,7 +115,6 @@ const SinglePackage = () => {
 			background={'background-light'}
 		>
 			<Wrapper>
-				<h1>{authContext.kcalAmount + 'kcal'}</h1>
 				<div className="[ wrap ] [ grid-frame-filter ]">
 					<button
 						onClick={filterHandler}

@@ -1,7 +1,9 @@
 import Wrapper from '../components/UI/Wrapper';
 import Region from '../components/UI/Region';
+import { Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 
-const Hero = () => {
+const Hero = (props) => {
 	return (
 		<Region>
 			<Wrapper>
@@ -17,19 +19,33 @@ const Hero = () => {
 						<span className="color-red">nauke</span>.
 					</h4>
 					<p>
-						Tu smo da ti pomognemo da ostvaris svoje ciljeve kakvi
+						Tu smo da ti pomognemo da ostvariš svoje ciljeve kakvi
 						god oni bili.
 					</p>
 					<div className="[ hero-cta ] [ wrap ]">
-						<a tabIndex="0" className="[ dashed ] [ button ]">
+						<Link
+							to="/single-package"
+							tabIndex="0"
+							className="[ dashed ] [ button ]"
+						>
 							Naruči ishranu
-						</a>
-						<a tabIndex="0" className="[ dashed ] [ button ]">
+						</Link>
+						<HashLink
+							to="/home/#market-region"
+							tabIndex="0"
+							className="[ dashed ] [ button ]"
+							onClick={props.filterHandler('trener')}
+						>
 							Odaberi Trenera
-						</a>
-						<a tabIndex="0" className="[ dashed ] [ button ]">
+						</HashLink>
+						<HashLink
+							to="/home/#market-region"
+							tabIndex="0"
+							className="[ dashed ] [ button ]"
+							onClick={props.filterHandler('nutricionista')}
+						>
 							Odaberi Nutricionistu
-						</a>
+						</HashLink>
 					</div>
 				</div>
 				<div className="dash-vertical"></div>

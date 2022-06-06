@@ -26,6 +26,7 @@ export const AuthContextProvider = (props) => {
 
 	const logoutHandler = () => {
 		setToken(null);
+		setKcalAmount(null);
 	};
 
 	const kcalHandler = (userKcal) => {

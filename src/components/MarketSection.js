@@ -1,39 +1,13 @@
 import Region from './UI/Region';
 import Wrapper from './UI/Wrapper';
-// import profileImg1 from '../assets/css/img/profileImgs/1.jpg';
-// import profileImg2 from '../assets/css/img/profileImgs/2.jpg';
-// import profileImg3 from '../assets/css/img/profileImgs/3.jpg';
-// import profileImg4 from '../assets/css/img/profileImgs/4.jpg';
-// import profileImg5 from '../assets/css/img/profileImgs/5.jpg';
+
 import { Link } from 'react-router-dom';
-// import chevronDown from '../assets/css/img/chevron-down.svg';
+
 import { useContext, useEffect, useState } from 'react';
 import CoachesContext from '../store/coaches-context';
 
 const MarketSection = (props) => {
 	const { coachesState, setCoachesState } = useContext(CoachesContext);
-	// let coachName = coach.name.charAt(0).toUpperCase + coach.name.slice(1);
-	const [filterState, setFilterState] = useState('sve');
-
-	const filterHandler = (e) => {
-		e.preventDefault();
-		switch (e.target.innerHTML.toLowerCase()) {
-			case 'treneri':
-				setFilterState('trener');
-				break;
-			case 'nutricionisti':
-				setFilterState('nutricionista');
-				break;
-			case 'trener/nutricionisti':
-				setFilterState('trener/nutricionista');
-				break;
-			case 'sve':
-				setFilterState('sve');
-				break;
-			default:
-				return 'sve';
-		}
-	};
 
 	let coaches = coachesState.map((coach) => (
 		<li key={coach.id}>
@@ -50,11 +24,11 @@ const MarketSection = (props) => {
 			</Link>
 		</li>
 	));
-	if (filterState !== 'sve') {
+	if (props.filterState !== 'sve') {
 		coaches = coachesState
 			.filter(
 				(filteredCoaches) =>
-					filteredCoaches.type.toLowerCase() === filterState
+					filteredCoaches.type.toLowerCase() === props.filterState
 			)
 			.map((coach) => (
 				<li key={coach.id}>
@@ -86,7 +60,7 @@ const MarketSection = (props) => {
 				<h2>Berza</h2>
 				<div className="[ wrap ] [ grid-frame-filter ]">
 					<button
-						onClick={filterHandler}
+						onClick={props.filterHandler('sve')}
 						className="button"
 						data-state="reversed"
 					>
@@ -94,7 +68,7 @@ const MarketSection = (props) => {
 					</button>
 					<button
 						id="treneri"
-						onClick={filterHandler}
+						onClick={props.filterHandler('trener')}
 						className="button"
 						data-state="reversed"
 						filter-state="treneri"
@@ -102,18 +76,18 @@ const MarketSection = (props) => {
 						Treneri
 					</button>
 					<button
-						onClick={filterHandler}
+						onClick={props.filterHandler('nutricionista')}
 						className="button"
 						data-state="reversed"
 					>
 						Nutricionisti
 					</button>
 					<button
-						onClick={filterHandler}
+						onClick={props.filterHandler('trener/nutricionista')}
 						className="button"
 						data-state="reversed"
 					>
-						Trener/Nutricionisti
+						Trener/Nutricionista
 					</button>
 					{/* <div className="dropdown-toggle">
 						<span className="with-icon">
@@ -130,16 +104,16 @@ const MarketSection = (props) => {
 							onClick={dropdownToggler}
 							className="[ dropdown-menu ] [ stack ] [ box ]"
 						>
-							<button onClick={filterHandler} className="button">
+							<button onClick={props.filterHandler} className="button">
 								Sve
 							</button>
-							<button onClick={filterHandler} className="button">
+							<button onClick={props.filterHandler} className="button">
 								Treneri
 							</button>
-							<button onClick={filterHandler} className="button">
+							<button onClick={props.filterHandler} className="button">
 								Nutricionisti
 							</button>
-							<button onClick={filterHandler} className="button">
+							<button onClick={props.filterHandler} className="button">
 								Trener/Nutricionisti
 							</button>
 						</ul>
