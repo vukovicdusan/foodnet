@@ -34,7 +34,7 @@ const Hero = (props) => {
 							to="/home/#market-region"
 							tabIndex="0"
 							className="[ dashed ] [ button ]"
-							onClick={props.filterHandler('trener')}
+							onClick={(e) => props.filterHandler(e, 'trener')}
 						>
 							Odaberi Trenera
 						</HashLink>
@@ -42,7 +42,9 @@ const Hero = (props) => {
 							to="/home/#market-region"
 							tabIndex="0"
 							className="[ dashed ] [ button ]"
-							onClick={props.filterHandler('nutricionista')}
+							onClick={(e) =>
+								props.filterHandler(e, 'nutricionista')
+							}
 						>
 							Odaberi Nutricionistu
 						</HashLink>

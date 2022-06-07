@@ -8,7 +8,7 @@ import CoachesContext from '../store/coaches-context';
 
 const MarketSection = (props) => {
 	const { coachesState, setCoachesState } = useContext(CoachesContext);
-
+	console.log(props.filterState);
 	let coaches = coachesState.map((coach) => (
 		<li key={coach.id}>
 			<Link
@@ -60,7 +60,7 @@ const MarketSection = (props) => {
 				<h2>Berza</h2>
 				<div className="[ wrap ] [ grid-frame-filter ]">
 					<button
-						onClick={props.filterHandler('sve')}
+						onClick={(e) => props.filterHandler(e, 'sve')}
 						className="button"
 						data-state="reversed"
 					>
@@ -68,7 +68,7 @@ const MarketSection = (props) => {
 					</button>
 					<button
 						id="treneri"
-						onClick={props.filterHandler('trener')}
+						onClick={(e) => props.filterHandler(e, 'trener')}
 						className="button"
 						data-state="reversed"
 						filter-state="treneri"
@@ -76,14 +76,16 @@ const MarketSection = (props) => {
 						Treneri
 					</button>
 					<button
-						onClick={props.filterHandler('nutricionista')}
+						onClick={(e) => props.filterHandler(e, 'nutricionista')}
 						className="button"
 						data-state="reversed"
 					>
 						Nutricionisti
 					</button>
 					<button
-						onClick={props.filterHandler('trener/nutricionista')}
+						onClick={(e) =>
+							props.filterHandler(e, 'trener/nutricionista')
+						}
 						className="button"
 						data-state="reversed"
 					>

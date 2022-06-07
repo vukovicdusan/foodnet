@@ -14,10 +14,7 @@ export const AuthContextProvider = (props) => {
 		const localToken = localStorage.getItem('auth-token');
 		return localToken ? JSON.parse(localToken) : null;
 	});
-	const [kcalAmount, setKcalAmount] = useState(() => {
-		const userKcalAmount = localStorage.getItem('user-kcals');
-		return userKcalAmount ? JSON.parse(userKcalAmount) : null;
-	});
+	const [kcalAmount, setKcalAmount] = useState(null);
 
 	const userIsLoggedIn = !!token;
 	const loginHandler = (token) => {

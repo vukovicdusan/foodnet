@@ -6,26 +6,22 @@ import MarketSection from '../components/MarketSection';
 import { useState } from 'react';
 
 const Home = () => {
-	// const [macroValuesState, setMacroValueState] = useState('');
-	// const macroValuesHandler = (val) => {
-	// 	setMacroValueState(val);
-	// };
 	const [coachState, setCoachState] = useState('');
 	const coachHandler = (personInfo) => {
 		setCoachState(personInfo);
 	};
 	const [filterState, setFilterState] = useState('sve');
 
-	const filterHandler = (e) => {
-		e.preventDefault();
-		switch (e) {
-			case 'treneri':
+	const filterHandler = (e, type) => {
+		// e.preventDefault();
+		switch (type) {
+			case 'trener':
 				setFilterState('trener');
 				break;
-			case 'nutricionisti':
+			case 'nutricionista':
 				setFilterState('nutricionista');
 				break;
-			case 'trener/nutricionisti':
+			case 'trener/nutricionista':
 				setFilterState('trener/nutricionista');
 				break;
 			case 'sve':
@@ -35,7 +31,7 @@ const Home = () => {
 				return 'sve';
 		}
 	};
-	console.log(coachState);
+	console.log(filterState);
 
 	return (
 		<div className="home">
