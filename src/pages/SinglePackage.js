@@ -10,6 +10,8 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import AuthContext from '../store/auth-context';
+import { Route } from 'react-router-dom';
+import SingleMeal from './SingleMeal';
 
 const DUMMY_MEALS = [
 	{
@@ -77,15 +79,23 @@ const SinglePackage = () => {
 
 	let mealsList = DUMMY_MEALS.map((meal) => (
 		<li key={meal.id}>
-			<Link
+			<div
 				to={'/single-meal/' + meal.id}
 				className="[ frame ] [ no-show ]"
 			>
-				<h4>{meal.name}</h4>
+				<Link>
+					<h4>{meal.name}</h4>
+				</Link>
 				<p>{meal.type}</p>
 				<p>{meal.price}€ po terminu</p>
 				<img src={meal.image} alt="meal" />
-			</Link>
+				<button
+					data-state="reversed"
+					className="[ button ] [ meals-button ]"
+				>
+					+
+				</button>
+			</div>
 		</li>
 	));
 	if (filterState !== 'sve') {
@@ -93,15 +103,23 @@ const SinglePackage = () => {
 			(filteredMeals) => filteredMeals.type.toLowerCase() === filterState
 		).map((meal) => (
 			<li key={meal.id}>
-				<Link
+				<div
 					to={'/single-meal/' + meal.id}
 					className="[ frame ] [ no-show ]"
 				>
-					<h4>{meal.name}</h4>
+					<Link>
+						<h4>{meal.name}</h4>
+					</Link>
 					<p>{meal.type}</p>
 					<p>{meal.price}€ po terminu</p>
 					<img src={meal.image} alt="meal" />
-				</Link>
+					<button
+						data-state="reversed"
+						className="[ button ] [ meals-button ]"
+					>
+						+
+					</button>
+				</div>
 			</li>
 		));
 	}
@@ -146,55 +164,14 @@ const SinglePackage = () => {
 					>
 						Večera
 					</button>
-					{/* <div className="dropdown-toggle">
-						<span className="with-icon">
-							<svg
-								aria-hidden="true"
-								focusable="false"
-								className="icon"
-							>
-								<use href={chevronDown + '#chevron-down'}></use>
-							</svg>
-							Filter
-						</span>
-						<ul
-							onClick={dropdownToggler}
-							className="[ dropdown-menu ] [ stack ] [ box ]"
-						>
-							<button onClick={filterHandler} className="button">
-								Sve
-							</button>
-							<button onClick={filterHandler} className="button">
-								Doručak
-							</button>
-							<button onClick={filterHandler} className="button">
-								Ručak
-							</button>
-							<button onClick={filterHandler} className="button">
-								Večera
-							</button>
-						</ul>
-					</div> */}
 				</div>
 				{/* <div className="grid"> */}
 				<ul
 					role="list"
 					className="[ grid ] [ margin-top-2 ] [ grid-frame ]"
 				>
-					{/* <li key={meal.id}>
-							<Link
-								to={'/single-meal/' + meal.id}
-								className="[ frame ] [ no-show ]"
-							>
-								<h4>{meal.type}</h4>
-								<p>{meal.name}</p>
-								<p>{meal.price}€ po terminu</p>
-								<img src={meal.image} alt="meal" />
-							</Link>
-						</li> */}
 					{mealsList}
 				</ul>
-				{/* </div> */}
 			</Wrapper>
 		</Region>
 	);

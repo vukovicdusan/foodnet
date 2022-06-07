@@ -31,7 +31,6 @@ const Home = () => {
 				return 'sve';
 		}
 	};
-	console.log(filterState);
 
 	return (
 		<div className="home">

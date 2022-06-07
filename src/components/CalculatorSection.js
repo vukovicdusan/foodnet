@@ -134,6 +134,7 @@ const Calculator = (props) => {
 								className={
 									finalValidationAge ? 'input-invalid' : ''
 								}
+								placeholder="Od 15 - 100"
 							/>
 							<label
 								className="border-title"
@@ -152,6 +153,7 @@ const Calculator = (props) => {
 								className={
 									finalValidationWeight ? 'input-invalid' : ''
 								}
+								placeholder="Od 30kg - 200kg"
 							/>
 							<label
 								className="border-title"
@@ -170,6 +172,7 @@ const Calculator = (props) => {
 								className={
 									finalValidationHeight ? 'input-invalid' : ''
 								}
+								placeholder="Od 100cm - 250cm"
 							/>
 							<label
 								className="border-title"

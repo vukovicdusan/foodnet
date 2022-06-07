@@ -35,6 +35,7 @@ export const CoachesContextProvider = (props) => {
 			fetchCoaches();
 		} catch (error) {
 			console.log(error.message);
+			console.log(error);
 		}
 	}, []);
 

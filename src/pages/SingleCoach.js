@@ -8,20 +8,19 @@ const SingleCoach = (props) => {
 	const params = useParams();
 	const { coachesState } = useContext(CoachesContext);
 	// let singleId = params.coachId;
-
+	// console.log(params.coachId);
 	const singleCoach = coachesState.find(
 		(coach) => coach.id == params.coachId
 	);
-	console.log(singleCoach);
-	console.log(coachesState);
+
 	return (
 		<Region
 			regionId={'single-coach--region'}
 			background={'background-light'}
 		>
 			<Wrapper>
-				<div className="switcher">
-					<div className="[ single-coach--image-side ]">
+				<div className="[ switcher ] [ single-template ]">
+					<div className="[ single-template--image-side ]">
 						<div className="frame">
 							<img src={singleCoach.image} alt="coach" />
 						</div>
@@ -32,11 +31,11 @@ const SingleCoach = (props) => {
 							</h4>
 							<p className="bold">{singleCoach.name}</p>
 							<p className="color-red">
-								{singleCoach.price} po terminu
+								{singleCoach.price}$ po terminu
 							</p>
 						</div>
 					</div>
-					<div className="[ single-coach--content-side ] [ stack ]">
+					<div className="[ single-template--content-side ] [ stack ]">
 						<h1>{singleCoach.name}</h1>
 						<p>
 							Lorem ipsum dolor sit amet, consectetur adipiscing
