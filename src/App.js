@@ -15,6 +15,9 @@ import SingleCoach from './pages/SingleCoach';
 function App() {
 	return (
 		<Fragment>
+			<Route path="/foodnet" exact>
+				<Redirect to="/home" exact />
+			</Route>
 			<Route path="/" exact>
 				<Redirect to="/home" exact />
 			</Route>

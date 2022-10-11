@@ -1,6 +1,6 @@
 /** ==== MODULAR SCALE ==== */
 :root {
-	--ratio: 1.5;
+	--ratio: 1.3;
 	--s-5: calc(var(--s-4) / var(--ratio));
 	--s-4: calc(var(--s-3) / var(--ratio));
 	--s-3: calc(var(--s-2) / var(--ratio));
@@ -216,6 +216,43 @@ label {
 	font-size: 0.9rem;
 }
 
+input[type='checkbox'] {
+	position: relative;
+	cursor: pointer;
+	min-inline-size: auto;
+}
+
+input[type='checkbox']:before {
+	content: '';
+	display: block;
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	top: -1px;
+	left: -1px;
+	border: 2px solid #555555;
+	border-radius: 3px;
+	background-color: white;
+}
+input[type='checkbox']:checked:after {
+	content: '';
+	display: block;
+	width: 5px;
+	height: 10px;
+	border: solid black;
+	border-width: 0 2px 2px 0;
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+	position: absolute;
+	top: 1px;
+	left: 5px;
+}
+
+input[type='checkbox']:focus {
+	border: none;
+}
+
 /** ==== BORDER TITLE ==== */
 
 .border-title--wrapper {
@@ -320,6 +357,10 @@ select:focus + .border-title {
 
 .bold {
 	font-weight: bold;
+}
+
+.flex {
+	display: flex;
 }
 
 /** ==== VISUALLY HIDDEN ==== */
@@ -635,7 +676,7 @@ select:focus + .border-title {
 }
 
 .button:hover {
-	border: solid var(--color-red);
+	border: 3px solid var(--color-red);
 	color: var(--text-dark);
 }
 
@@ -678,6 +719,28 @@ header {
 	padding: 0.5rem;
 }
 
+/* === LOGIN & REGISTER === */
+
+.signup-alert,
+.signup-success {
+	color: indianred;
+	font-size: var(--s-1);
+	font-weight: bold;
+}
+
+.signup-success {
+	color: green;
+}
+
+#register .card-button {
+	background: none;
+	border: none;
+}
+
+#register input[type='checkbox'] {
+	margin-inline-end: 10px;
+}
+
 /** ==== HERO ==== */
 
 .hero {
@@ -718,6 +781,36 @@ header {
 	width: 1em;
 	height: 1em;
 }
+
+/** ==== ACCORDION ==== */
+.accordion {
+}
+
+.accordion-toggle {
+	position: relative;
+	cursor: pointer;
+}
+
+.accordion-toggle .icon {
+	margin-inline-end: 0.4rem;
+	width: 1em;
+	height: 1em;
+}
+
+.accordion-toggle.accordion-open .icon {
+	transform: rotate(180deg) translateY(-3px);
+}
+
+.accordion-content {
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.2s ease-in-out;
+}
+
+.accordion-content.accordion-open {
+	padding-block-start: 5px;
+}
+
 /** ==== OFFER-SECTION ==== */
 .offer-section {
 	--grid-gap: 4rem;

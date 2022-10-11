@@ -1,44 +1,28 @@
 import { useContext, useState } from 'react';
 import Wrapper from '../components/UI/Wrapper';
-import AuthContext from '../store/auth-context';
+import AuthContext from '../store/AuthContext';
+// import { collection, addDoc, doc, setDoc } from 'firebase/firestore';
+// import { db } from '../assets/firebase/firebase';
 
 const UserProfile = () => {
 	const authContext = useContext(AuthContext);
-	const [newPass, setNewPass] = useState('');
-	const changePassHandler = (e) => {
-		setNewPass(e.target.value);
-	};
-	const newPassword = newPass;
-	const formSubmitHandler = (e) => {
+	// const [dbError, setDbError] = useState('');
+
+	const changePassHandler = (e) => {};
+	const addCoachHandler = async (e) => {
 		e.preventDefault();
-		fetch(
-			'https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyCK5L9zhNN0e8AaK1swxU5Gpgh7shWWg3Q',
-			{
-				method: 'POST',
-				body: JSON.stringify({
-					idToken: authContext.token,
-					password: newPassword,
-					returnSecureToken: true,
-				}),
-				headers: { 'Content-Type': 'Application/JSON' },
-			}
-		)
-			.then((response) => {
-				if (response.ok) {
-					return response.json();
-				} else {
-					return response.json().then((data) => {
-						let errorMessage = 'Change password failed';
-						// if (data && data.error && data.error.message) {
-						throw new Error(errorMessage);
-						// }
-					});
-				}
-			})
-			.catch((err) => {
-				alert(err.message);
-			});
+		// try {
+		// 	const res = await addDoc(collection(db, 'kurabi'), {
+		// 		name: 'jedan mali kurab',
+		// 		state: 'CA',
+		// 		country: 'USA',
+		// 	});
+		// } catch (err) {
+		// 	setDbError(err);
+		// 	console.log(err);
+		// }
 	};
+
 	return (
 		<Wrapper>
 			<div className="[ center-inner ] [ stack ]">
@@ -46,9 +30,9 @@ const UserProfile = () => {
 				<form
 					action=""
 					className="[ center-inner ][ stack ] [ margin-top-4 ]"
-					onSubmit={formSubmitHandler}
+					onSubmit={addCoachHandler}
 				>
-					<div className="border-title--wrapper">
+					{/* <div className="border-title--wrapper">
 						<input
 							type="password"
 							id="change-pass"
@@ -57,7 +41,7 @@ const UserProfile = () => {
 						<label className="border-title" htmlFor="change-pass">
 							Novi Password
 						</label>
-					</div>
+					</div> */}
 					<button className="button">Potvrdi</button>
 				</form>
 			</div>

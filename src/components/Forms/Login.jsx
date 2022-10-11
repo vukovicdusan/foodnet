@@ -1,13 +1,16 @@
 import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../assets/firebase/firebase';
 
-import AuthContext from '../../store/auth-context';
+import AuthContext from '../../store/AuthContext';
 import Wrapper from '../UI/Wrapper';
 
 const Login = (props) => {
 	const [isLogin, setIsLogin] = useState(false);
-	const [emailValue, setEmailValue] = useState();
-	const [passValue, setPassValue] = useState();
+	const [emailValue, setEmailValue] = useState('');
+	const [passValue, setPassValue] = useState('');
+	const [loginError, setLoginError] = useState(false);
 
 	const authContext = useContext(AuthContext);
 
@@ -19,49 +22,27 @@ const Login = (props) => {
 		setPassValue(e.target.value);
 	};
 
-	const email = emailValue;
-	const pass = passValue;
-
 	const formSubmitHandler = (e) => {
 		e.preventDefault();
-		if (isLogin) {
-		} else {
-			fetch(
-				'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCK5L9zhNN0e8AaK1swxU5Gpgh7shWWg3Q',
-				{
-					method: 'POST',
-					body: JSON.stringify({
-						email: email,
-						password: pass,
-						returnSecureToken: true,
-					}),
-					headers: {
-						'Content-Type': 'application/json',
-					},
-				}
-			)
-				.then((res) => {
-					if (res.ok) {
-						return res.json();
-						// setIsLogin(true);
-					} else {
-						return res.json().then((data) => {
-							let errorMessage = 'Authentication Failed';
-							// if (data && data.error && data.error.message) {
-							// 	errorMessage = data.error.message;
-							// }
-
-							throw new Error(errorMessage);
-						});
-					}
-				})
-				.then((data) => {
-					authContext.login(data.idToken);
-				})
-				.catch((err) => {
-					alert(err.message);
+		signInWithEmailAndPassword(auth, emailValue, passValue)
+			.then((userCredential) => {
+				// Signed in
+				const user = userCredential.user;
+				// authContext.login(user.accessToken);
+				authContext.dispatch({
+					type: 'LOGIN',
+					payload: user,
 				});
-		}
+				setLoginError(false);
+				console.log(user);
+			})
+			.catch((error) => {
+				const errorCode = error.code;
+				const errorMessage = error.message;
+				console.log(errorCode);
+				console.log(errorMessage);
+				setLoginError(true);
+			});
 	};
 
 	return (
@@ -105,11 +86,15 @@ const Login = (props) => {
 
 					<button className="[ button ]">Uloguj se</button>
 				</form>
-				<div
-					aria-atomic="true"
-					role="alert"
-					className="[ signup-alert ] [ center ]"
-				></div>
+				{loginError && (
+					<div
+						aria-atomic="true"
+						role="alert"
+						className="[ signup-alert ] [ center ]"
+					>
+						Pogresan username ili password. Pokusajte ponovo.
+					</div>
+				)}
 				<div>
 					<p>Ne posedujes nalog?</p>
 					<Link

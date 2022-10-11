@@ -3,12 +3,13 @@ import logo from '../assets/css/img/chili-pepper.png';
 import chevronDown from '../assets/css/img/chevron-down.svg';
 import { NavLink, Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
-import AuthContext from '../store/auth-context';
+import AuthContext from '../store/AuthContext';
 import { useContext } from 'react';
 
 const Header = () => {
-	const authContext = useContext(AuthContext);
-	const isLoggedIn = authContext.isLoggedIn;
+	const { currentUser, dispatch } = useContext(AuthContext);
+
+	console.log(currentUser);
 	return (
 		<header className="[ site-header ]">
 			<Wrapper>
@@ -43,7 +44,7 @@ const Header = () => {
 							</li>
 
 							<li>
-								{!isLoggedIn && (
+								{!currentUser && (
 									<NavLink
 										activeClassName="navlink-active"
 										to="/login-register/login"
@@ -51,7 +52,7 @@ const Header = () => {
 										Prijavi se
 									</NavLink>
 								)}
-								{isLoggedIn && (
+								{currentUser && (
 									<div className="dropdown-toggle">
 										<span className="with-icon">
 											<svg
@@ -74,7 +75,11 @@ const Header = () => {
 											</Link>
 											<a
 												href="/"
-												onClick={authContext.logout}
+												onClick={() =>
+													dispatch({
+														type: 'LOGOUT',
+													})
+												}
 											>
 												Odjavi se
 											</a>
