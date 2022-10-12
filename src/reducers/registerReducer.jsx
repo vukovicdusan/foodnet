@@ -23,7 +23,10 @@ const registerReducer = (state, action) => {
 				default:
 					return state;
 			}
-
+		case 'IMAGE INPUT':
+			return { ...state, image: action.payload };
+		// case 'IMAGE URL':
+		// 	return { ...state, image: action.payload };
 		// return;
 		default:
 			return;

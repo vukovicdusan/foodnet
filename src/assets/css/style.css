@@ -363,6 +363,88 @@ select:focus + .border-title {
 	display: flex;
 }
 
+/* === ANIMATION === */
+.loader-container {
+	display: flex;
+	align-items: center;
+	gap: var(--s1);
+}
+.dot-pulse {
+	position: relative;
+	left: -9999px;
+	width: 5px;
+	height: 5px;
+	border-radius: 5px;
+	background-color: var(--color-red);
+	color: var(--color-red);
+	box-shadow: 9999px 0 0 -5px var(--color-red);
+	animation: dotPulse 1.5s infinite linear;
+	animation-delay: 0.25s;
+}
+
+.dot-pulse::before,
+.dot-pulse::after {
+	content: '';
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	width: 5px;
+	height: 5px;
+	border-radius: 5px;
+	background-color: var(--color-red);
+	color: var(--color-red);
+}
+
+.dot-pulse::before {
+	box-shadow: 9984px 0 0 -5px var(--color-red);
+	animation: dotPulseBefore 1.5s infinite linear;
+	animation-delay: 0s;
+}
+
+.dot-pulse::after {
+	box-shadow: 10014px 0 0 -5px var(--color-red);
+	animation: dotPulseAfter 1.5s infinite linear;
+	animation-delay: 0.5s;
+}
+
+@keyframes dotPulseBefore {
+	0% {
+		box-shadow: 9984px 0 0 -5px var(--color-red);
+	}
+	30% {
+		box-shadow: 9984px 0 0 2px var(--color-red);
+	}
+	60%,
+	100% {
+		box-shadow: 9984px 0 0 -5px var(--color-red);
+	}
+}
+
+@keyframes dotPulse {
+	0% {
+		box-shadow: 9999px 0 0 -5px var(--color-red);
+	}
+	30% {
+		box-shadow: 9999px 0 0 2px var(--color-red);
+	}
+	60%,
+	100% {
+		box-shadow: 9999px 0 0 -5px var(--color-red);
+	}
+}
+
+@keyframes dotPulseAfter {
+	0% {
+		box-shadow: 10014px 0 0 -5px var(--color-red);
+	}
+	30% {
+		box-shadow: 10014px 0 0 2px var(--color-red);
+	}
+	60%,
+	100% {
+		box-shadow: 10014px 0 0 -5px var(--color-red);
+	}
+}
 /** ==== VISUALLY HIDDEN ==== */
 
 .visually-hidden {
@@ -530,6 +612,7 @@ select:focus + .border-title {
 	inline-size: 100%;
 	block-size: 100%;
 	object-fit: cover;
+	border: dashed var(--background-dark);
 }
 
 /** ==== REPEL ==== **/
@@ -724,7 +807,7 @@ header {
 .signup-alert,
 .signup-success {
 	color: indianred;
-	font-size: var(--s-1);
+	/* font-size: var(--s-1); */
 	font-weight: bold;
 }
 
@@ -732,13 +815,26 @@ header {
 	color: green;
 }
 
-#register .card-button {
+.register-region .card-button {
 	background: none;
 	border: none;
 }
 
-#register input[type='checkbox'] {
+.register-region input[type='checkbox'] {
 	margin-inline-end: 10px;
+}
+
+.register-region .frame {
+	--n: 1;
+	--d: 1;
+	flex-direction: column;
+	/* border: solid black; */
+	position: relative;
+	overflow: visible;
+}
+
+.register-region .profile-img--container {
+	max-inline-size: 10rem;
 }
 
 /** ==== HERO ==== */
@@ -1029,9 +1125,9 @@ header {
 .single-coach--image-side {
 	max-inline-size: 25rem;
 }
-.single-coach--image-side img {
+/* .single-coach--image-side img {
 	border: dashed var(--background-dark);
-}
+} */
 
 .single-coach--content-side .stack,
 .single-coach--content-side.stack {
