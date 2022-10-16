@@ -23,7 +23,7 @@ const INITIAL_STATE = {
 	// gender: 'male',
 	image: 'untouched',
 	price: null,
-	type: 'coach',
+	type: 'trener',
 	city: '',
 	state: '',
 };
@@ -318,11 +318,11 @@ const Register = (props) => {
 									autoCorrect="off"
 									onChange={inputHandler}
 								>
-									<option value="coach">Trener</option>
-									<option value="nutricionist">
+									<option value="trener">Trener</option>
+									<option value="nutricionista">
 										Nutricionista
 									</option>
-									<option value="coach-nutricionist">
+									<option value="trener & nutricionista">
 										Trener/Nutricionista
 									</option>
 								</select>
@@ -389,7 +389,7 @@ const Register = (props) => {
 					{isLoading ? (
 						<div className="[ loader-container ]">
 							<p className="[ color-red ]">Odmah stiže</p>{' '}
-							<div class="dot-pulse"></div>
+							<div className="dot-pulse"></div>
 						</div>
 					) : (
 						''

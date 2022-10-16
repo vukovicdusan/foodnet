@@ -8,98 +8,33 @@ import profileImg5 from '../assets/css/img/profileImgs/5.jpg';
 import { Link } from 'react-router-dom';
 import chevronDown from '../assets/css/img/chevron-down.svg';
 import { useEffect, useState } from 'react';
-// import { initializeApp } from 'firebase/app';
-// import { getStorage, ref } from 'firebase/storage';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../assets/firebase/firebase';
 
-// // Set the configuration for your app
-// // TODO: Replace with your app's config object
-// const firebaseConfig = {
-// 	apiKey: 'AIzaSyCK5L9zhNN0e8AaK1swxU5Gpgh7shWWg3Q',
-// 	//   authDomain: '<your-auth-domain>',
-// 	//   databaseURL: '<your-database-url>',
-// 	storageBucket: 'gs://food-net-auth.appspot.com/',
-// };
-// const firebaseApp = initializeApp(firebaseConfig);
-
-// // Get a reference to the storage service, which is used to create references in your storage bucket
-// const storage = getStorage(firebaseApp);
-
-// // Create a storage reference from our storage service
-// const storageRef = ref(storage);
-
-let DUMMY_DATA = [
-	{
-		id: 1,
-		name: 'Miljko Vlajković',
-		type: 'Trener',
-		image: profileImg1,
-		price: 10,
-		gender: 'male',
-	},
-	{
-		id: 2,
-		name: 'Vlajko Miljkovic',
-		type: 'Nutricionista',
-		image: profileImg2,
-		price: 15,
-		gender: 'male',
-	},
-	{
-		id: 3,
-		name: 'Milko Didic',
-		type: 'Nutricionista',
-		image: profileImg3,
-		price: 10,
-		gender: 'male',
-	},
-	{
-		id: 4,
-		name: 'Mara Sretenovic',
-		type: 'Trener',
-		image: profileImg4,
-		price: 20,
-		gender: 'female',
-	},
-	{
-		id: 5,
-		name: 'Saša Marinkovic',
-		type: 'Trener',
-		image: profileImg5,
-		price: 5,
-		gender: 'female',
-	},
-];
 const MarketSection = (props) => {
-	// const [coachesList, setCoachesList] = useState([]);
-	// useEffect(() => {
-	// 	const fetchCoaches = async () => {
-	// 		const response = await fetch(
-	// 			'https://food-net-auth-default-rtdb.europe-west1.firebasedatabase.app/coaches.json'
-	// 		);
-	// 		const responseData = await response.json();
-
-	// 		const loadedCoaches = [];
-	// 		for (const key in responseData) {
-	// 			loadedCoaches.push({
-	// 				id: key,
-	// 				name: responseData[key].name,
-	// 				type: responseData[key].type,
-	// 				image: responseData[key].image,
-	// 				price: responseData[key].price,
-	// 				gender: responseData[key].gender,
-	// 			});
-	// 		}
-	// 		setCoachesList(loadedCoaches);
-	// 	};
-
-	// 	fetchCoaches();
-	// }, []);
-
-	// let coachName = coach.name.charAt(0).toUpperCase + coach.name.slice(1);
+	const [coaches, setCoaches] = useState([]);
 	const [filterState, setFilterState] = useState('sve');
+
+	useEffect(() => {
+		const fetch = async () => {
+			let list = [];
+			try {
+				const querySnapshot = await getDocs(collection(db, 'coaches'));
+				querySnapshot.forEach((doc) => {
+					// doc.data() is never undefined for query doc snapshots
+					list.push({ id: doc.id, ...doc.data() });
+				});
+				setCoaches(list);
+			} catch (err) {
+				console.log(err);
+			}
+		};
+		fetch();
+	}, []);
 
 	const filterHandler = (e) => {
 		e.preventDefault();
+		console.log(e.target.innerHTML.toLowerCase());
 		switch (e.target.innerHTML.toLowerCase()) {
 			case 'treneri':
 				setFilterState('trener');
@@ -107,8 +42,8 @@ const MarketSection = (props) => {
 			case 'nutricionisti':
 				setFilterState('nutricionista');
 				break;
-			case 'trener/nutricionisti':
-				setFilterState('trener/nutricionista');
+			case 'trener/nutricionista':
+				setFilterState('trener & nutricionista');
 				break;
 			case 'sve':
 				setFilterState('sve');
@@ -118,7 +53,7 @@ const MarketSection = (props) => {
 		}
 	};
 
-	let coachesList = DUMMY_DATA.map((coach) => (
+	let coachesList = coaches.map((coach) => (
 		<li key={coach.id}>
 			<Link
 				to={'/single-coach/' + coach.id}
@@ -132,22 +67,24 @@ const MarketSection = (props) => {
 		</li>
 	));
 	if (filterState !== 'sve') {
-		coachesList = DUMMY_DATA.filter(
-			(filteredCoaches) =>
-				filteredCoaches.type.toLowerCase() === filterState
-		).map((coach) => (
-			<li key={coach.id}>
-				<Link
-					to={'/single-coach/' + coach.id}
-					className="[ frame ] [ no-show ]"
-				>
-					<h4>{coach.type}</h4>
-					<p>{coach.name}</p>
-					<p>{coach.price}€ po terminu</p>
-					<img src={coach.image} alt="profile" />
-				</Link>
-			</li>
-		));
+		coachesList = coaches
+			.filter(
+				(filteredCoaches) =>
+					filteredCoaches.type.toLowerCase() === filterState
+			)
+			.map((coach) => (
+				<li key={coach.id}>
+					<Link
+						to={'/single-coach/' + coach.id}
+						className="[ frame ] [ no-show ]"
+					>
+						<h4>{coach.type}</h4>
+						<p>{coach.name}</p>
+						<p>{coach.price}€ po terminu</p>
+						<img src={coach.image} alt="profile" />
+					</Link>
+				</li>
+			));
 	}
 
 	const dropdownToggler = (e) => {
@@ -189,7 +126,7 @@ const MarketSection = (props) => {
 							className="button"
 							data-state="reversed"
 						>
-							Trener/Nutricionisti
+							Trener/Nutricionista
 						</button>
 					</div>
 					<div className="dropdown-toggle">
@@ -217,25 +154,12 @@ const MarketSection = (props) => {
 								Nutricionisti
 							</button>
 							<button onClick={filterHandler} className="button">
-								Trener/Nutricionisti
+								Trener/Nutricionista
 							</button>
 						</ul>
 					</div>
 
 					<ul role="list" className="[ grid ] [ margin-top-2 ]">
-						{/* {DUMMY_DATA.map((coach) => (
-							<li key={coach.id}>
-								<Link
-									to={'/single-coach/' + coach.id}
-									className="[ frame ] [ no-show ]"
-								>
-									<h4>{coach.type}</h4>
-									<p>{coach.name}</p>
-									<p>{coach.price}€ po terminu</p>
-									<img src={coach.image} alt="profile" />
-								</Link>
-							</li>
-						))} */}
 						{coachesList}
 					</ul>
 				</div>

@@ -1047,6 +1047,7 @@ header {
 .market-region .frame p,
 .market-region .frame h4 {
 	transform: translateY(5ex);
+	text-transform: capitalize;
 }
 
 .market-region .frame:focus {
@@ -1110,6 +1111,10 @@ header {
 	/* border: solid black; */
 	position: relative;
 	overflow: visible;
+}
+
+.single-coach--region h4 {
+	text-transform: capitalize;
 }
 
 .single-coach--region h4,

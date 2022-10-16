@@ -44,7 +44,6 @@ const Calculator = (props) => {
 	const submitHandler = (e) => {
 		e.preventDefault();
 		dispatch({ type: 'VALIDATE FORM & RESULT' });
-		props.macroValuesHandler(calculatorState.result.BMPFinal);
 	};
 
 	let finalValidationAge =
@@ -63,6 +62,7 @@ const Calculator = (props) => {
 
 	useEffect(() => {
 		calculatorState.formIsValid && scrollIntoView();
+		props.macroValuesHandler(calculatorState.result.BMPFinal);
 	}, [calculatorState.formIsValid]);
 
 	return (

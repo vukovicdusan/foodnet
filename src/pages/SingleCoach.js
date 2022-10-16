@@ -1,58 +1,36 @@
 import { useParams } from 'react-router-dom';
-import profileImg1 from '../assets/css/img/profileImgs/1.jpg';
-import profileImg2 from '../assets/css/img/profileImgs/2.jpg';
-import profileImg3 from '../assets/css/img/profileImgs/3.jpg';
-import profileImg4 from '../assets/css/img/profileImgs/4.jpg';
-import profileImg5 from '../assets/css/img/profileImgs/5.jpg';
 import Region from '../components/UI/Region';
 import Wrapper from '../components/UI/Wrapper';
-let DUMMY_DATA = [
-	{
-		id: 1,
-		name: 'Miljko Vlajković',
-		type: 'Trener',
-		image: profileImg1,
-		price: 10,
-		gender: 'male',
-	},
-	{
-		id: 2,
-		name: 'Vlajko Miljkovic',
-		type: 'Nutricionista',
-		image: profileImg2,
-		price: 15,
-		gender: 'male',
-	},
-	{
-		id: 3,
-		name: 'Milko Didic',
-		type: 'Nutricionista',
-		image: profileImg3,
-		price: 10,
-		gender: 'male',
-	},
-	{
-		id: 4,
-		name: 'Mara Sretenovic',
-		type: 'Trener',
-		image: profileImg4,
-		price: 20,
-		gender: 'female',
-	},
-	{
-		id: 5,
-		name: 'Saša Marinkovic',
-		type: 'Trener',
-		image: profileImg5,
-		price: 5,
-		gender: 'female',
-	},
-];
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../assets/firebase/firebase';
+import { useEffect, useState } from 'react';
+
 const SingleCoach = (props) => {
 	const params = useParams();
+	const [singleCoach, setSingleCoach] = useState({});
 
-	const singleCoach = DUMMY_DATA.find((coach) => coach.id == params.coachId);
+	useEffect(() => {
+		let coach = {};
+		try {
+			const loadSingleCoach = async () => {
+				const docRef = doc(db, 'coaches', params.coachId);
+				const docSnap = await getDoc(docRef);
 
+				if (docSnap.exists()) {
+					console.log(docSnap.data());
+					Object.assign(coach, docSnap.data());
+					setSingleCoach(coach);
+				} else {
+					// doc.data() will be undefined in this case
+					console.log('No such document!');
+				}
+			};
+			loadSingleCoach();
+		} catch (err) {
+			console.log(err);
+		}
+	}, []);
+	// console.log(singleCoach.name);
 	return (
 		<Region
 			regionClass={'single-coach--region'}
@@ -62,18 +40,18 @@ const SingleCoach = (props) => {
 				<div className="switcher">
 					<div className="[ single-coach--image-side ]">
 						<div className="frame">
-							<img src={singleCoach.image} alt="coach" />
+							<img src={singleCoach?.image} alt="coach" />
 						</div>
 						<div className="[ stack ] [ margin-top-1 ]">
-							<h4>{singleCoach.type}</h4>
+							<h4>{singleCoach?.type}</h4>
 							<p className="bold">{singleCoach.name}</p>
 							<p className="color-red">
-								{singleCoach.price} po terminu
+								{singleCoach?.price} po terminu
 							</p>
 						</div>
 					</div>
 					<div className="[ single-coach--content-side ] [ stack ]">
-						<h1>{singleCoach.name}</h1>
+						<h1>{singleCoach?.name}</h1>
 						<p>
 							Lorem ipsum dolor sit amet, consectetur adipiscing
 							elit. Etiam arcu libero, maximus luctus ultricies
@@ -85,7 +63,7 @@ const SingleCoach = (props) => {
 							nisi.
 						</p>
 						<form action="" className="[ coach-message ] [ stack ]">
-							{singleCoach.type.toLowerCase() === 'trener' ? (
+							{singleCoach.type?.toLowerCase() === 'trener' ? (
 								<h5>Poruka za trenera</h5>
 							) : (
 								<h5>Poruka za nutricionistu</h5>
