@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/foodnet/static/css/main.64720348.css",
+    "main.js": "/foodnet/static/js/main.fa2c5f56.js",
+    "static/js/787.b9f3a3ed.chunk.js": "/foodnet/static/js/787.b9f3a3ed.chunk.js",
+    "static/media/5.jpg": "/foodnet/static/media/5.c9501f30b438ebc7fb26.jpg",
+    "static/media/4.jpg": "/foodnet/static/media/4.580ac048d3be4f863f31.jpg",
+    "static/media/chili-pepper.png": "/foodnet/static/media/chili-pepper.d2ec1c1cc6685b2ae5c1.png",
+    "static/media/2.jpg": "/foodnet/static/media/2.7f9b2ef51c9ed8aa90fc.jpg",
+    "static/media/3.jpg": "/foodnet/static/media/3.7ae1361ed18bd834bb2d.jpg",
+    "static/media/1.jpg": "/foodnet/static/media/1.73d129038023d644bb34.jpg",
+    "static/media/arrow.svg": "/foodnet/static/media/arrow.fd579e107a3aa4f40f04e647fe23b146.svg",
+    "index.html": "/foodnet/index.html",
+    "static/media/chevron-down.svg": "/foodnet/static/media/chevron-down.906f3edc35848cd9d48fe6519beb0a67.svg",
+    "main.64720348.css.map": "/foodnet/static/css/main.64720348.css.map",
+    "main.fa2c5f56.js.map": "/foodnet/static/js/main.fa2c5f56.js.map",
+    "787.b9f3a3ed.chunk.js.map": "/foodnet/static/js/787.b9f3a3ed.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.64720348.css",
+    "static/js/main.fa2c5f56.js"
+  ]
+}
