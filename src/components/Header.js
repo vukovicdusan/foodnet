@@ -41,7 +41,7 @@ const Header = () => {
 						<img width="35" height="35" src={logo} alt="logo" />
 					</Link>
 					<nav>
-						<ul className="[ wrap ] [ text-bold ]" role="list">
+						<ul className="[ wrap ] [ text-bold ]">
 							<li>
 								<NavLink
 									to="/home"

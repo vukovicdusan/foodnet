@@ -1,14 +1,9 @@
-import { Fragment, useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth, db, storage } from '../../assets/firebase/firebase';
-import { collection, addDoc, doc, setDoc } from 'firebase/firestore';
-import {
-	getStorage,
-	ref,
-	uploadBytesResumable,
-	getDownloadURL,
-} from 'firebase/storage';
+import { doc, setDoc } from 'firebase/firestore';
+import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { useReducer } from 'react';
 import registerReducer from '../../reducers/registerReducer';
 import chevron from '../../assets/css/img/chevron-down.svg';
@@ -29,7 +24,7 @@ const INITIAL_STATE = {
 };
 
 const Register = (props) => {
-	const [isLogin, setIsLogin] = useState(false);
+	// const [isLogin, setIsLogin] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
 	const [registerError, setRegisterError] = useState(false);
 	const [registerSuccess, setRegisterSuccess] = useState(false);

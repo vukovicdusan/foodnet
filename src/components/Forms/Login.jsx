@@ -7,7 +7,7 @@ import AuthContext from '../../store/AuthContext';
 import Wrapper from '../UI/Wrapper';
 
 const Login = (props) => {
-	const [isLogin, setIsLogin] = useState(false);
+	// const [isLogin, setIsLogin] = useState(false);
 	const [emailValue, setEmailValue] = useState('');
 	const [passValue, setPassValue] = useState('');
 	const [loginError, setLoginError] = useState(false);

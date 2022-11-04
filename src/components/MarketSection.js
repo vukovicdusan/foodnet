@@ -1,10 +1,5 @@
 import Region from './UI/Region';
 import Wrapper from './UI/Wrapper';
-import profileImg1 from '../assets/css/img/profileImgs/1.jpg';
-import profileImg2 from '../assets/css/img/profileImgs/2.jpg';
-import profileImg3 from '../assets/css/img/profileImgs/3.jpg';
-import profileImg4 from '../assets/css/img/profileImgs/4.jpg';
-import profileImg5 from '../assets/css/img/profileImgs/5.jpg';
 import { Link } from 'react-router-dom';
 import chevronDown from '../assets/css/img/chevron-down.svg';
 import { useEffect, useState } from 'react';
@@ -159,9 +154,7 @@ const MarketSection = (props) => {
 						</ul>
 					</div>
 
-					<ul role="list" className="[ grid ] [ margin-top-2 ]">
-						{coachesList}
-					</ul>
+					<ul className="[ grid ] [ margin-top-2 ]">{coachesList}</ul>
 				</div>
 			</Wrapper>
 		</Region>
